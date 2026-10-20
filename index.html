@@ -15,7 +15,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Impacto Rosa">
   <meta property="og:title" content="Impacto Rosa · Sábado, 07/11 às 15h · Casa de Oração Franca">
-  <meta property="og:description" content="Encontro de mulheres com Wânia Arantes. Av. Alagoas, 1163, Jardim Paulista, Franca-SP. Fale com a equipe pelo WhatsApp 24h.">
+  <meta property="og:description" content="Encontro de mulheres com Wânia Arantes: Pilares, confraternização e quitutes partilhados. Av. Alagoas, 1163, Jardim Paulista, Franca-SP. WhatsApp 24h.">
   <meta property="og:url" content="https://ebarroso12.github.io/Impactorosapagina/">
   <meta property="og:image" content="https://ebarroso12.github.io/Impactorosapagina/icons/og-image.jpg">
   <meta property="og:image:width" content="1200">
@@ -57,7 +57,9 @@ body {
   font-family: var(--body); font-size: 16px; line-height: 1.7;
   -webkit-font-smoothing: antialiased; overflow-x: hidden;
 }
-img { max-width: 100%; display: block; }
+/* height:auto mantém a proporção: sem isso a altura dos atributos width/height
+   fica fixa e a imagem estica quando a tela é estreita. */
+img { max-width: 100%; height: auto; display: block; }
 a { color: var(--rose); }
 :focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
 h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.05; margin: 0; text-wrap: balance; }
@@ -212,6 +214,21 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
 .pillars h3 { font-size: 1.8rem; color: var(--rose); text-transform: uppercase; letter-spacing: .06em; }
 .pillars p { color: var(--muted); font-size: .95rem; }
 
+/* No próximo encontro */
+.next { padding-block: 80px 24px; }
+.next-head { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; margin-bottom: 36px; }
+.next-head p { color: var(--muted); max-width: 620px; }
+.next-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .next-list { grid-template-columns: repeat(3, 1fr); } }
+.next-list li {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 28px 24px;
+  display: flex; flex-direction: column; gap: 10px; align-items: flex-start;
+}
+.next-list svg { width: 38px; height: 38px; color: var(--amber); }
+.next-list h3 { font-size: 1.7rem; color: var(--rose); }
+.next-list p { color: var(--muted); font-size: .95rem; }
+.next-list strong { color: var(--text); }
+
 /* Galeria */
 .gallery-section { padding-block: 40px 96px; }
 .gallery-section .wrap:first-child { text-align: center; margin-bottom: 36px; }
@@ -290,7 +307,7 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
 .eagle { background: var(--bg-2); border-block: 1px solid var(--line); padding-block: 88px; }
 .eagle-grid { display: grid; gap: 40px; align-items: center; grid-template-columns: 1fr; }
 @media (min-width: 900px) { .eagle-grid { grid-template-columns: 1fr 1fr; gap: 64px; } }
-.eagle-img { width: 100%; max-width: 460px; justify-self: center; border-radius: 20px; box-shadow: 0 24px 60px rgba(0, 0, 0, .45); }
+.eagle-img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; max-width: 460px; justify-self: center; border-radius: 20px; box-shadow: 0 24px 60px rgba(0, 0, 0, .45); }
 .eagle-grid > div { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
 .eagle p { color: var(--muted); }
 
@@ -451,12 +468,14 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
       <span>Casa de Oração · Franca-SP</span><i>✦</i>
       <span>Águias não foram feitas para viver presas no chão</span><i>✦</i>
       <span>Primeiro dentro, depois fora</span><i>✦</i>
+      <span>Pilares · Confraternização · Traga um quitute</span><i>✦</i>
       <span>Atendimento 24h · (16) 99127-1838</span><i>✦</i>
       <span>Impacto Rosa · Encontro de mulheres</span><i>✦</i>
       <span>Sábado · 07 de novembro · 15h</span><i>✦</i>
       <span>Casa de Oração · Franca-SP</span><i>✦</i>
       <span>Águias não foram feitas para viver presas no chão</span><i>✦</i>
       <span>Primeiro dentro, depois fora</span><i>✦</i>
+      <span>Pilares · Confraternização · Traga um quitute</span><i>✦</i>
       <span>Atendimento 24h · (16) 99127-1838</span><i>✦</i>
     </div>
   </div>
@@ -538,6 +557,34 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
         <li><strong>9 anos</strong><span>de “Meu Lar Feliz” na TV</span></li>
       </ul>
     </div>
+
+    <!-- NO PRÓXIMO ENCONTRO -->
+    <section class="next" aria-labelledby="next-titulo">
+      <div class="wrap">
+        <div class="next-head">
+          <p class="label">Sábado · 07 de novembro · 15h</p>
+          <h2 id="next-titulo">No próximo <em>encontro</em></h2>
+          <p>Uma tarde especial, com Palavra e mesa farta, preparada por todas nós.</p>
+        </div>
+        <ul class="next-list">
+          <li>
+            <svg aria-hidden="true"><use href="#i-pillar"></use></svg>
+            <h3>Pilares</h3>
+            <p>Uma ministração sobre os pilares que sustentam a nossa vida, a nossa casa e a nossa fé.</p>
+          </li>
+          <li>
+            <svg aria-hidden="true"><use href="#i-cheers"></use></svg>
+            <h3>Confraternização</h3>
+            <p>Um tempo para conversar, rir junto, fazer novas amizades e celebrar o que Deus tem feito.</p>
+          </li>
+          <li>
+            <svg aria-hidden="true"><use href="#i-basket"></use></svg>
+            <h3>Quitutes partilhados</h3>
+            <p><strong>Cada mulher traz um quitute</strong>, doce ou salgado, para ser compartilhado na mesa com todas.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
 
     <!-- O MOVIMENTO -->
     <section id="sobre" class="about">
@@ -715,7 +762,7 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
       <div class="wrap narrow">
         <p class="label">Sábado · 07 de novembro · 15h · Casa de Oração</p>
         <h2>Chegou a <em>sua vez.</em></h2>
-        <p>Venha como você está e traga uma amiga. Confirme sua presença com a nossa equipe pelo WhatsApp.</p>
+        <p>Venha como você está, traga uma amiga e um quitute para compartilhar. Confirme sua presença com a nossa equipe pelo WhatsApp.</p>
         <a class="btn btn-main btn-xl js-whatsapp" href="https://wa.me/5516991271838?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20Impacto%20Rosa." target="_blank" rel="noopener">
           <svg aria-hidden="true"><use href="#i-arrow"></use></svg> Quero participar
         </a>
@@ -800,6 +847,9 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
     <symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5c-3.5-.5-6.5 0-8.5 1.5Z"/><path d="M12 6.5v13"/></g></symbol>
     <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 21.5c-4 0-6.5-2.7-6.5-6.2 0-3.6 3-5.6 3.6-9.3 2 1.3 3 3.2 3 5 1-.8 1.7-2.2 1.8-3.8 2.6 2 4.6 5 4.6 8.1 0 3.5-2.5 6.2-6.5 6.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
     <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-8-4.7-8-10.6A4.4 4.4 0 0 1 12 7a4.4 4.4 0 0 1 8 2.9c0 5.9-8 10.6-8 10.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pillar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5 12 3l9 3.5"/><path d="M4 8h16M4 21h16M5 18.5h14"/><path d="M7 8.5v10M10.3 8.5v10M13.7 8.5v10M17 8.5v10"/></g></symbol>
+    <symbol id="i-cheers" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h5l-.5 6a2 2 0 0 1-4 0Z"/><path d="M7.5 12v7M5.5 19h4"/><path d="M14 4h5l-.5 6a2 2 0 0 1-4 0Z"/><path d="M16.5 12v7M14.5 19h4"/><path d="M11 2.5l1 1M12 1.5v1.2M13 2.5l-1 1"/></g></symbol>
+    <symbol id="i-basket" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18l-1.8 9a2 2 0 0 1-2 1.5H6.8a2 2 0 0 1-2-1.5Z"/><path d="M7.5 10 10 4.5M16.5 10 14 4.5"/><path d="M9 13.5v4M12 13.5v4M15 13.5v4"/></g></symbol>
   </svg>
 
   <script>

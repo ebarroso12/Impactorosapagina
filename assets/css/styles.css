@@ -29,7 +29,9 @@ body {
   font-family: var(--body); font-size: 16px; line-height: 1.7;
   -webkit-font-smoothing: antialiased; overflow-x: hidden;
 }
-img { max-width: 100%; display: block; }
+/* height:auto mantém a proporção: sem isso a altura dos atributos width/height
+   fica fixa e a imagem estica quando a tela é estreita. */
+img { max-width: 100%; height: auto; display: block; }
 a { color: var(--rose); }
 :focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
 h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.05; margin: 0; text-wrap: balance; }
@@ -184,6 +186,21 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
 .pillars h3 { font-size: 1.8rem; color: var(--rose); text-transform: uppercase; letter-spacing: .06em; }
 .pillars p { color: var(--muted); font-size: .95rem; }
 
+/* No próximo encontro */
+.next { padding-block: 80px 24px; }
+.next-head { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; margin-bottom: 36px; }
+.next-head p { color: var(--muted); max-width: 620px; }
+.next-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .next-list { grid-template-columns: repeat(3, 1fr); } }
+.next-list li {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 28px 24px;
+  display: flex; flex-direction: column; gap: 10px; align-items: flex-start;
+}
+.next-list svg { width: 38px; height: 38px; color: var(--amber); }
+.next-list h3 { font-size: 1.7rem; color: var(--rose); }
+.next-list p { color: var(--muted); font-size: .95rem; }
+.next-list strong { color: var(--text); }
+
 /* Galeria */
 .gallery-section { padding-block: 40px 96px; }
 .gallery-section .wrap:first-child { text-align: center; margin-bottom: 36px; }
@@ -262,7 +279,7 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
 .eagle { background: var(--bg-2); border-block: 1px solid var(--line); padding-block: 88px; }
 .eagle-grid { display: grid; gap: 40px; align-items: center; grid-template-columns: 1fr; }
 @media (min-width: 900px) { .eagle-grid { grid-template-columns: 1fr 1fr; gap: 64px; } }
-.eagle-img { width: 100%; max-width: 460px; justify-self: center; border-radius: 20px; box-shadow: 0 24px 60px rgba(0, 0, 0, .45); }
+.eagle-img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; max-width: 460px; justify-self: center; border-radius: 20px; box-shadow: 0 24px 60px rgba(0, 0, 0, .45); }
 .eagle-grid > div { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
 .eagle p { color: var(--muted); }
 

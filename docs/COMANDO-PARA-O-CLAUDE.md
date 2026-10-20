@@ -18,6 +18,8 @@ rode `python3 scripts/montar_pagina.py` para gerar o `index.html` final. Nunca e
 - Próximo encontro: **sábado, 07 de novembro de 2026, às 15h**
 - Contagem regressiva: `data-alvo="2026-11-07T15:00:00-03:00"`; durante o encontro (até `data-fim`)
   mostra "O Impacto Rosa está acontecendo agora!"
+- No encontro de 07/11: **Pilares** (ministração), **confraternização** e **quitutes partilhados**
+  (cada mulher traz um quitute, doce ou salgado, para compartilhar). Seção "No próximo encontro".
 - Local: **Casa de Oração**, Av. Alagoas, 1163, Jardim Paulista, Franca-SP, CEP 14401-402
 - WhatsApp 24h: **+55 16 99127-1838**, link
   `https://wa.me/5516991271838?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20Impacto%20Rosa.`
