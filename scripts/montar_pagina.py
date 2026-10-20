@@ -46,7 +46,6 @@ def montar(url: str, artefato: bool) -> str:
     html = html.replace('<script src="../assets/js/main.js" defer></script>', f"<script>\n{js}</script>")
     # Ícones da aba e prévia: arquivos na raiz do site.
     html = html.replace('href="../favicon.ico"', 'href="favicon.ico"').replace('href="../icons/', 'href="icons/')
-    html = html.replace('<link rel="icon" type="image/svg+xml" href="../assets/img/logo-aguia.svg">\n  ', "")
     html = html.replace("SITE_URL", url)
 
     if artefato:
