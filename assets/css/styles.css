@@ -201,6 +201,60 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
 .next-list p { color: var(--muted); font-size: .95rem; }
 .next-list strong { color: var(--text); }
 
+/* Cadastro (pop-up) */
+.lead-open {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 2px; padding: 8px 4px;
+  background: none; border: 0; color: var(--rose); font: inherit; font-size: .85rem; font-weight: 600;
+  text-decoration: underline; text-underline-offset: 4px; cursor: pointer;
+}
+.lead-open svg { color: var(--amber); }
+.lead {
+  position: fixed; inset: 0; z-index: 2500; display: flex; align-items: center; justify-content: center;
+  background: rgba(10, 5, 8, .82); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  overflow-y: auto; animation: lead-in .35s ease;
+}
+@keyframes lead-in { from { opacity: 0; } }
+.lead-card {
+  position: relative; width: 100%; max-width: 460px; max-height: 100%; overflow-y: auto; margin: auto;
+  background: linear-gradient(180deg, #2a1620, var(--bg)); border: 1px solid var(--line); border-radius: 22px;
+  padding: 30px clamp(20px, 5vw, 32px) 26px; box-shadow: 0 30px 80px rgba(0, 0, 0, .6);
+}
+.lead-close {
+  position: absolute; top: 10px; right: 10px; width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--line); background: rgba(22, 11, 16, .7); color: var(--text); font-size: 1.6rem; line-height: 1; cursor: pointer;
+}
+.lead-close:hover { color: var(--rose); border-color: var(--rose); }
+.lead-form, .lead-ok { display: flex; flex-direction: column; gap: 8px; }
+.lead-ok { align-items: center; text-align: center; gap: 12px; }
+.lead-ok .btn { width: 100%; }
+.lead-logo { width: 32px; height: auto; }
+.lead-card .label { margin: 4px 0 0; }
+.lead-card h2 { font-size: clamp(1.9rem, 6vw, 2.4rem); }
+.lead-ok h2:focus { outline: none; }
+.lead-sub { color: var(--muted); font-size: .92rem; margin-bottom: 6px; }
+.lead-form label { font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+.lead-form input[type="text"], .lead-form input[type="tel"], .lead-form input[type="email"] {
+  width: 100%; min-height: 48px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line);
+  background: rgba(22, 11, 16, .8); color: var(--text); font: inherit; font-size: 16px;
+}
+.lead-form input::placeholder { color: #8d7882; }
+.lead-form input:focus { outline: none; border-color: var(--rose); box-shadow: 0 0 0 3px rgba(236, 157, 178, .25); }
+.lead-form input[aria-invalid="true"] { border-color: #ff6b81; }
+.lead-at { position: relative; }
+.lead-at span { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+.lead-at input { padding-left: 32px !important; }
+.lead-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.lead-form .lead-check {
+  display: flex; gap: 10px; align-items: flex-start; margin-top: 10px; cursor: pointer;
+  font-size: .82rem; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--muted);
+}
+.lead-check input { width: 20px; height: 20px; flex: none; margin-top: 2px; accent-color: var(--rose-strong); }
+.lead-error { color: #ff9aa9; font-size: .85rem; }
+.lead-submit, .lead-fallback { width: 100%; margin-top: 8px; }
+.lead-submit[disabled] { opacity: .7; cursor: wait; }
+.lead-later { background: none; border: 0; color: var(--muted); font: inherit; font-size: .85rem; text-decoration: underline; cursor: pointer; padding: 8px; }
+
 /* Pilates com Karen Dantes */
 .pilates {
   display: grid; gap: 28px; align-items: center; grid-template-columns: 1fr; margin-bottom: 16px;

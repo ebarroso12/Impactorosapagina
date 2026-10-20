@@ -230,6 +230,60 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
 .next-list p { color: var(--muted); font-size: .95rem; }
 .next-list strong { color: var(--text); }
 
+/* Cadastro (pop-up) */
+.lead-open {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 2px; padding: 8px 4px;
+  background: none; border: 0; color: var(--rose); font: inherit; font-size: .85rem; font-weight: 600;
+  text-decoration: underline; text-underline-offset: 4px; cursor: pointer;
+}
+.lead-open svg { color: var(--amber); }
+.lead {
+  position: fixed; inset: 0; z-index: 2500; display: flex; align-items: center; justify-content: center;
+  background: rgba(10, 5, 8, .82); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  overflow-y: auto; animation: lead-in .35s ease;
+}
+@keyframes lead-in { from { opacity: 0; } }
+.lead-card {
+  position: relative; width: 100%; max-width: 460px; max-height: 100%; overflow-y: auto; margin: auto;
+  background: linear-gradient(180deg, #2a1620, var(--bg)); border: 1px solid var(--line); border-radius: 22px;
+  padding: 30px clamp(20px, 5vw, 32px) 26px; box-shadow: 0 30px 80px rgba(0, 0, 0, .6);
+}
+.lead-close {
+  position: absolute; top: 10px; right: 10px; width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--line); background: rgba(22, 11, 16, .7); color: var(--text); font-size: 1.6rem; line-height: 1; cursor: pointer;
+}
+.lead-close:hover { color: var(--rose); border-color: var(--rose); }
+.lead-form, .lead-ok { display: flex; flex-direction: column; gap: 8px; }
+.lead-ok { align-items: center; text-align: center; gap: 12px; }
+.lead-ok .btn { width: 100%; }
+.lead-logo { width: 32px; height: auto; }
+.lead-card .label { margin: 4px 0 0; }
+.lead-card h2 { font-size: clamp(1.9rem, 6vw, 2.4rem); }
+.lead-ok h2:focus { outline: none; }
+.lead-sub { color: var(--muted); font-size: .92rem; margin-bottom: 6px; }
+.lead-form label { font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+.lead-form input[type="text"], .lead-form input[type="tel"], .lead-form input[type="email"] {
+  width: 100%; min-height: 48px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line);
+  background: rgba(22, 11, 16, .8); color: var(--text); font: inherit; font-size: 16px;
+}
+.lead-form input::placeholder { color: #8d7882; }
+.lead-form input:focus { outline: none; border-color: var(--rose); box-shadow: 0 0 0 3px rgba(236, 157, 178, .25); }
+.lead-form input[aria-invalid="true"] { border-color: #ff6b81; }
+.lead-at { position: relative; }
+.lead-at span { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+.lead-at input { padding-left: 32px !important; }
+.lead-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.lead-form .lead-check {
+  display: flex; gap: 10px; align-items: flex-start; margin-top: 10px; cursor: pointer;
+  font-size: .82rem; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--muted);
+}
+.lead-check input { width: 20px; height: 20px; flex: none; margin-top: 2px; accent-color: var(--rose-strong); }
+.lead-error { color: #ff9aa9; font-size: .85rem; }
+.lead-submit, .lead-fallback { width: 100%; margin-top: 8px; }
+.lead-submit[disabled] { opacity: .7; cursor: wait; }
+.lead-later { background: none; border: 0; color: var(--muted); font: inherit; font-size: .85rem; text-decoration: underline; cursor: pointer; padding: 8px; }
+
 /* Pilates com Karen Dantes */
 .pilates {
   display: grid; gap: 28px; align-items: center; grid-template-columns: 1fr; margin-bottom: 16px;
@@ -595,6 +649,9 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
           <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Reuni%C3%A3o%20de%20Mulheres%20%C2%B7%20Impacto%20Rosa&amp;dates=20261107T150000%2F20261107T180000&amp;ctz=America%2FSao_Paulo&amp;location=Casa%20de%20Ora%C3%A7%C3%A3o%2C%20Av.%20Alagoas%2C%201163%20-%20Jardim%20Paulista%2C%20Franca%20-%20SP%2C%2014401-402&amp;details=Reuni%C3%A3o%20de%20Mulheres%20do%20Impacto%20Rosa%20com%20W%C3%A2nia%20Arantes%20e%20pilates%20com%20Karen%20Dantes.%20Traga%20um%20prato%20para%20o%20momento%20de%20comunh%C3%A3o.%20Legging%20preta%20ou%20marrom%20e%20camiseta%20rosa.%20Entrada%20gratuita." target="_blank" rel="noopener">Google Agenda</a>
           <a class="js-ics" href="agenda/reuniao-de-mulheres-impacto-rosa.ics">iPhone / Outlook</a>
         </p>
+        <button class="lead-open" type="button" data-lead-open>
+          <svg aria-hidden="true"><use href="#i-mail"></use></svg> Cadastre-se e receba as novidades do Impacto Rosa
+        </button>
       </div>
     </section>
 
@@ -920,6 +977,59 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
     </a>
   </div>
 
+  <!-- CADASTRO (POP-UP) -->
+  <div class="lead" id="lead" role="dialog" aria-modal="true" aria-labelledby="lead-titulo" hidden>
+    <div class="lead-card">
+      <button class="lead-close" type="button" aria-label="Fechar cadastro" data-lead-close>×</button>
+
+      <form class="lead-form" id="lead-form" novalidate>
+        <img class="lead-logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjI5IDE4NjQiPjxwYXRoIGZpbGw9IiNjOTcwN2UiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTQxNy4zIDE4NTIuMkM0MTUuMiAxODQxLjggNDE2LjQgMTgyMi45IDQxOS45IDE4MTAuNkM0MjkuOSAxNzc1LjQgNDU2LjYgMTc0MS42IDQ5MCAxNzIxLjdDNTIxLjcgMTcwMi44IDU1MiAxNjkxIDU4NSAxNjg0LjZDNjEwLjIgMTY3OS43IDYyNi41IDE2NzcuMyA2NTIuNSAxNjc0LjVDNzM0IDE2NjUuOCA3NzAuMSAxNjU5LjQgODEyLjUgMTY0NS44Qzg2OSAxNjI3LjggOTE1LjEgMTYwNC4xIDk0OS40IDE1NzUuM0M5NTMgMTU3Mi4zIDk1NiAxNTcxLjEgOTU2IDE1NzIuNkM5NTYgMTU3NC42IDk0Ny44IDE1OTEuMyA5NDEuOCAxNjAxLjVDOTI1LjEgMTYyOS43IDkxMCAxNjQ5IDg4OSAxNjY4LjdDODUxLjUgMTcwMy44IDc5OC41IDE3MzAuNiA3NTAgMTczOS4xQzcyMC4xIDE3NDQuMyA3MjEuNCAxNzQ0LjIgNjQ1IDE3NDVDNTU0LjMgMTc0NiA1NDIuNSAxNzQ3IDUxNCAxNzU2LjJDNDkwIDE3NjQgNDY2LjMgMTc3Ny41IDQ1My4yIDE3OTAuOUM0MzguNiAxODA1LjkgNDI1LjUgMTgzMC45IDQyMC42IDE4NTMuMkM0MTkuNyAxODU3LjEgNDE4LjIgMTg1Ni43IDQxNy4zIDE4NTIuMlpNMzg3LjYgMTgyOS4xQzM4Ny4zIDE4MjguNiAzODQuNyAxODIxLjcgMzgxLjkgMTgxMy45QzM2OS44IDE3NzkuNSAzNzAuNCAxNzUzLjcgMzg0LjEgMTcxMy4yQzQwNi43IDE2NDYuOSA0NzUuMyAxNTkwLjIgNTg2LjUgMTU0NkM2MTAuMyAxNTM2LjYgNjYzLjMgMTUyMCA3MDYuNSAxNTA4LjVDNzIyLjIgMTUwNC4zIDc3NC45IDE0OTAgNzk0IDE0ODQuNkM4ODkuNiAxNDU4IDk3NSAxNDE3LjIgMTA0NyAxMzYzLjRDMTA3MC4yIDEzNDYuMiAxMTA3LjIgMTMxMi4xIDExMjIuMiAxMjk0LjNDMTEzMS40IDEyODMuNCAxMTMyLjYgMTI4My41IDExMjkgMTI5NC44QzExMDQuNCAxMzcwLjkgMTA1NC44IDE0NDguMiA5OTcgMTUwMC41Qzk0OCAxNTQ0LjcgOTAwLjMgMTU3NS41IDg0NC4xIDE1OTkuMUM3OTUuOSAxNjE5LjQgNzU4LjggMTYyOC42IDY4MiAxNjM5LjVDNTkxLjMgMTY1Mi4yIDU5MiAxNjUyLjEgNTU1IDE2NjEuNUM1MzUuNyAxNjY2LjQgNTA4LjIgMTY3Ni4yIDQ5Ny41IDE2ODJDNDkwLjYgMTY4NS44IDQ4Ny4zIDE2ODcuNSA0ODIgMTY4OS44QzQ3OS41IDE2OTAuOSA0NzAuMyAxNjk2LjkgNDYxLjUgMTcwMy4xQzQxNy40IDE3MzQuMyAzOTUuOCAxNzY5LjYgMzkwLjggMTgxOC4yQzM4OS43IDE4MjkuMSAzODkgMTgzMS40IDM4Ny42IDE4MjkuMVpNMzQ4LjIgMTcyNi40QzM0NC42IDE3MTEuOSAzNDQuMyAxNjg2LjcgMzQ3LjUgMTY2NS41QzM1Ni43IDE2MDUuMiAzOTggMTUzNi44IDQ1OCAxNDgyLjdDNDkzLjYgMTQ1MC41IDUzOS45IDE0MTcuNyA1ODMgMTM5NEM1ODkuMyAxMzkwLjUgNTk4LjEgMTM4NS41IDYwMi41IDEzODIuOUM2MDYuOSAxMzgwLjMgNjI1LjQgMTM3MC45IDY0My41IDEzNjEuOEM2NzUuMSAxMzQ2LjIgNjg5LjEgMTMzOS42IDczNyAxMzE4Qzg1Ny45IDEyNjMuNCA5MTguNiAxMjMwLjMgOTgxLjUgMTE4NC43QzEwMzguNSAxMTQzLjMgMTA5MS41IDEwOTEuMSAxMTMyLjQgMTAzNS44QzExNjYuNyA5ODkuNiAxMTk0LjggOTQwLjMgMTIxMy4yIDg5NC42QzEyMTguNSA4ODEuMyAxMjE5IDg4MC40IDEyMjAuMSA4ODIuMUMxMjIyLjUgODg2IDEyMjAuOSA5NDEuMyAxMjE3LjQgOTcwLjVDMTIwNi4xIDEwNjYuOCAxMTY3LjEgMTE2NS45IDExMTEuNyAxMjM5LjVDMTA4NS4xIDEyNzQuOCAxMDQ2LjcgMTMxMi42IDEwMTIgMTMzNy43QzkzMS4yIDEzOTYgODY4LjIgMTQyMi45IDY5OCAxNDcxLjRDNjE3LjcgMTQ5NC4yIDU1NCAxNTE5LjUgNTEwIDE1NDUuOEM0NjkgMTU3MC4zIDQ0Ni42IDE1ODcuMyA0MTguNyAxNjE0LjlDMzgxLjYgMTY1MS41IDM2MC40IDE2ODUuNSAzNTIuNCAxNzIxLjJDMzUwLjQgMTczMC4yIDM0OS40IDE3MzEuNCAzNDguMiAxNzI2LjRaTTI2OC4zIDE2NjkuN0MyMjQgMTYyMy4zIDE4NS41IDE1NDcuNCAxNzEuNSAxNDc4LjVDMTY1LjkgMTQ1MC44IDE2NC42IDE0MzguMyAxNjQuNiAxNDEwQzE2NC42IDEzNTguMyAxNzEuMSAxMzI4LjggMTk4LjUgMTI1OEMyMzAuNCAxMTc1LjUgMjM3LjQgMTEyOS44IDIyNi4xIDEwNzguM0MyMTkuOCAxMDQ5LjUgMTk5LjYgMTAxNy40IDE3Ni40IDk5OS41QzE0NSA5NzUuMiAxMjYuNiA5NjggOTYuMSA5NjhDNTguOSA5NjggNDEuNCA5NzguMiAzNSAxMDAzLjhDMzMuOSAxMDA4IDMzIDEwMTMuNiAzMyAxMDE2LjJDMzMgMTAyMi43IDMxLjcgMTAyMi45IDI2LjkgMTAxNi44QzYuOCA5OTEuNSAyLjMgOTQ2LjUgMTYuNCA5MTEuNUMzMS44IDg3My4xIDgzIDgzNy45IDEyNi44IDgzNS43QzEzNC40IDgzNS4zIDEzNC45IDgzNC44IDEzNiA4MjcuM0MxNDAuMiA3OTcgMTc2LjIgNzU3LjMgMjE4LjkgNzM1LjZDMjYwLjEgNzE0LjcgMzAwLjIgNzA2LjIgMzUxLjQgNzA3LjNDMzg1LjEgNzA4IDQxMi4zIDcxMi40IDQ0My41IDcyMi4xQzQ3OS40IDczMy4zIDQ4Ni44IDczNS43IDUwMyA3NDEuN0M1MTUuNCA3NDYuNCA1MjQuNyA3NDkuMSA1MzQuOSA3NTEuMUM1NTAuNCA3NTQuMiA1NTAuNiA3NTQuMyA1NDkuNSA3NTYuMUM1NDguNSA3NTcuNiA1NDAuNSA3NTYuOSA1MTggNzUzLjVDNTA4LjkgNzUyLjIgNDk0LjggNzUwLjEgNDg2LjcgNzQ5QzQ3OC41IDc0Ny44IDQ2My4zIDc0NS40IDQ1Mi45IDc0My41QzQzMi4yIDczOS43IDQyMyA3MzkuMSA0MjMgNzQxLjRDNDIzIDc0My4xIDQyNS41IDc0NCA0NDEgNzQ3LjZDNDU1LjYgNzUxIDQ2Mi4xIDc1My4yIDQ4MS4xIDc2MS4zQzQ5Ni4xIDc2Ny43IDUwMSA3NjkuMyA1MzUgNzc4LjRDNTU3LjkgNzg0LjUgNTYwLjggNzg1IDU4NC4yIDc4NS43QzU5NS43IDc4NiA2MDUgNzg2LjYgNjA1IDc4N0M2MDUgNzg4LjEgNjAwLjUgNzg5LjkgNTg0LjkgNzk1LjFDNTY4LjggODAwLjUgNTU5LjcgODAxLjcgNTMyLjYgODAyLjNDNTIzLjkgODAyLjUgNTE4LjUgODAzLjEgNTE4LjMgODAzLjdDNTE4LjEgODA0LjMgNTIxLjYgODA3LjMgNTI2LjIgODEwLjNDNTU1LjMgODI5LjggNTc3LjkgODU0LjMgNTkwLjggODgwLjRDNjAwIDg5OC44IDYwOC4zIDkyMy4xIDYwNS40IDkyM0M2MDQuOSA5MjMgNjAyLjUgOTE5LjYgNjAwLjEgOTE1LjVDNTk0LjQgOTA1LjkgNTg4LjMgODk5IDU3MS4zIDg4M0M1NTEgODYzLjcgNTQ3LjkgODYyLjIgNTU3LjIgODc2LjJDNTc3LjEgOTA2IDU4OC41IDk1NC4xIDU4NC4xIDk4OS43QzU4Mi4yIDEwMDQuNyA1NjcuNiAxMDUzIDU2NC45IDEwNTNDNTYzLjQgMTA1MyA1NjMuOSAxMDM5LjQgNTY1LjUgMTAzNS4zQzU2OS43IDEwMjQuNiA1NzAuOCAxMDExLjEgNTY5IDk5NC42QzU2Ny40IDk4MC45IDU2NC43IDk3OCA1NjMuNSA5ODguOEM1NjEuMSAxMDEwIDU1Mi41IDEwMzkuNiA1NDEuNyAxMDYzLjlDNTI5LjkgMTA5MC44IDUyOSAxMDkyLjIgNTAzLjIgMTEyNC44QzQ5Ny44IDExMzEuNiA0OTcuNCAxMTI4LjUgNTAyLjQgMTExNy45QzUwNy40IDExMDcuMiA1MTIuMSAxMDkzLjcgNTE3LjkgMTA3My41QzUyNC45IDEwNDkuNCA1MjUuNCAxMDQ1LjUgNTI1LjQgMTAxNi41TDUyNS41IDk5MC41TDUyMS4zIDk3NC4zQzUxNi4zIDk1NS4zIDUxMy40IDk0Ny4xIDUwOCA5MzcuM0M1MDEuOCA5MjYgNTAzIDkyMy4zIDUxMC4xIDkzMi4yQzUyNi4zIDk1Mi41IDU0MC4zIDk3OS41IDU0Mi42IDk5NC42QzU0My41IDEwMDEuMiA1NDQuNyAxMDA0IDU0Ni40IDEwMDRDNTQ4LjUgMTAwNCA1NDguOCA5OTkuMiA1NDcuOSA5ODBDNTQ2LjYgOTUzLjEgNTQzLjkgOTQzLjIgNTMxLjIgOTE4QzUxMi4zIDg4MC44IDQ5NC45IDg1OS41IDQ2NS43IDgzOC4xQzQ1OC45IDgzMy4xIDQ1OS4xIDgzMS41IDQ2Ni41IDgzMi40QzQ3NS40IDgzMy40IDQ4My41IDgzNy43IDQ5OCA4NDguOUM1MDIuNyA4NTIuNiA1MDkuNiA4NTcuNyA1MTMuNSA4NjAuNUM1MTcuNCA4NjMuMiA1MjIuOCA4NjcuMyA1MjUuNiA4NjkuN0M1MzQuMyA4NzcgNTM1LjMgODc1LjEgNTI4LjYgODY0LjJDNTE3LjkgODQ3IDUwMy42IDgzMS4zIDQ5MC41IDgyMi44QzQ4Ny4yIDgyMC42IDQ4My45IDgxNy43IDQ4My4xIDgxNi4yQzQ4Mi40IDgxNC43IDQ4MSA4MTIuNiA0ODAuMSA4MTEuNkM0NzcuNCA4MDguNCA0NTguNCA3OTYuMyA0NTIuOCA3OTQuMkM0NDkuOSA3OTMuMSA0NDQuMSA3OTAuNSA0NDAgNzg4LjVDNDI1LjcgNzgxLjUgNDEwLjUgNzc0LjggNDAwLjcgNzcxLjRDMzc3LjUgNzYzLjQgMzM3LjkgNzU2IDMxNy4zIDc1NkMzMDguMyA3NTYgMzA2LjQgNzU0LjcgMzEyLjEgNzUyLjdDMzI0LjMgNzQ4LjMgMzMxLjIgNzQ3LjIgMzUyLjMgNzQ2LjFDMzY2LjcgNzQ1LjQgMzY5LjggNzQ0LjggMzY3IDc0M0MzNjQuMSA3NDEuMiAzNTEuNyA3NDAuNSAzMjIuNSA3NDAuNUMyNzUuNCA3NDAuNiAyNDguNiA3NDUuNyAyMTUuMiA3NjEuMUMyMDAuOCA3NjcuNyAxODMuNiA3ODAuOCAxNzAuNiA3OTQuOUMxNTguMiA4MDguNSAxNTEuOCA4MjAuMSAxNDkuNiA4MzMuNUwxNDguNCA4NDAuNUwxNDQuNCA4NDEuMkMxMzcuNSA4NDIuNCAxMzEuOCA4NDQuOSAxMTcuNCA4NTMuMUM5OC42IDg2My43IDk1LjQgODY3LjQgMTA3LjEgODY0LjlDMTIyLjQgODYxLjYgMTQ2LjIgODY3LjcgMTUwLjYgODc2LjFDMTU0LjcgODg0LjEgMTQ5LjggODg2LjggMTI5IDg4OC4yQzExNi45IDg4OSAxMTIuOSA4ODkuNyAxMDQuNSA4OTIuNUM5OSA4OTQuMyA5Mi44IDg5Ni4xIDkwLjcgODk2LjRDODggODk2LjkgODUuMSA4OTguOCA4MC4yIDkwMy4zQzc2LjUgOTA2LjggNjkuNiA5MTIuOCA2NC43IDkxNi44QzUxLjYgOTI3LjcgNDIuMiA5MzkuNiA0NC43IDk0Mi4xQzQ1LjUgOTQyLjkgNDcuNSA5NDEuNiA1MS41IDkzOEM1Ny42IDkzMi40IDY1LjIgOTI4LjUgNzYgOTI1LjNDODIgOTIzLjUgODUuMyA5MjMuMyAxMTggOTIzLjVDMTU3LjcgOTIzLjggMTczLjMgOTI1LjQgMjAwLjUgOTMyLjFDMjYyLjUgOTQ3LjUgMzA4LjEgOTc2LjYgMzQ0IDEwMjMuNkMzNTUuNSAxMDM4LjUgMzUyLjQgMTAzOC4yIDMzOC4yIDEwMjMuMUMzMDAuNCA5ODMgMjUzIDk1OC4yIDE5MS41IDk0Ni40QzE3My4xIDk0Mi45IDE0MS44IDk0Mi40IDEyOCA5NDUuM0MxMDAuMiA5NTEuNCA5NS4xIDk1NSAxMTQuMyA5NTVDMTQ0LjQgOTU1LjEgMTgyLjUgOTYxLjQgMjA0IDk2OS44QzI1My43IDk4OS4xIDI4OS45IDEwMTguOSAzMjEuNyAxMDY2LjVDMzMzLjEgMTA4My43IDMzOC4xIDEwOTQuNSAzNDUuNSAxMTE4LjFDMzU4LjUgMTE1OS41IDM1Ny40IDEyMDMuNCAzNDIuMyAxMjQ5LjVDMzMzLjkgMTI3NSAzMTMuOCAxMzEzLjEgMzEwLjUgMTMwOS44QzMxMC4xIDEzMDkuNCAzMTEuNiAxMzAyLjkgMzEzLjggMTI5NS4zQzMyMC42IDEyNzIuNiAzMjEuOSAxMjY0LjcgMzIzLjIgMTIzOS43QzMyNC43IDEyMTAuNiAzMjIgMTE4MC45IDMxNS41IDExNTYuMUMzMDguNSAxMTI5IDI4MC4zIDEwNzAgMjc0LjQgMTA3MEMyNzIuNSAxMDcwIDI3Mi42IDEwNzEuNSAyNzUuNSAxMDgwLjFDMjg3LjcgMTExNS42IDI5MS4xIDExNDYuNCAyODggMTE5MC41QzI4NS43IDEyMjIuMSAyNzguNyAxMjU4LjEgMjY4LjkgMTI4OC41QzI1Mi40IDEzMzkuOCAyMzguOCAxMzk1LjYgMjM0IDE0MzJDMjIzLjMgMTUxMy4yIDIzNS4zIDE1OTEuNiAyNjguNyAxNjU4LjNDMjczLjkgMTY2OC43IDI3OCAxNjc3LjYgMjc3LjggMTY3OC4yQzI3Ny42IDE2NzguOCAyNzMuMyAxNjc0LjkgMjY4LjMgMTY2OS43Wk0zMjIuNyAxNjY2LjNDMzE5LjcgMTY2MS41IDMxOC43IDE2MDYuOCAzMjEuMyAxNTkwLjRDMzMyLjMgMTUyMS4xIDM3Mi4yIDE0NDMuNiA0MzIuNSAxMzc0LjVDNDU1IDEzNDguOCA0NjIuNSAxMzQwLjggNDg2LjYgMTMxN0M1MjEuNSAxMjgyLjYgNTQ1LjggMTI2MS4xIDU5MiAxMjIzLjhDNjE5LjcgMTIwMS41IDYxOS44IDEyMDEuNCA2OTAuMSAxMTQ4LjNDODMzLjcgMTAzOS44IDkwNi40IDk3Mi4zIDk3NS4zIDg4NEMxMDYxIDc3NC4xIDExMTUuMSA2NDcuOSAxMTMyIDUxOUMxMTMzLjEgNTEwLjUgMTEzNC43IDQ5OS43IDExMzUuNSA0OTVDMTEzNi4yIDQ5MC4zIDExMzcuMSA0ODMuNCAxMTM3LjUgNDc5LjVDMTEzOC4yIDQ3MS4yIDExMzguOCA0NjguOCAxMTQwLjEgNDY5LjJDMTE0My41IDQ3MC4zIDExNjQuMiA1MzIuMSAxMTcyIDU2NC41QzEyMDIuMyA2OTAuMiAxMTkxLjMgODIyLjMgMTE0MS4zIDkzMS41QzExMDIuOCAxMDE1LjUgMTAzNC41IDEwOTYuOCA5NTEuNSAxMTU2LjlDOTEyLjkgMTE4NSA4NTcuMiAxMjE3LjkgODA2LjUgMTI0Mi42Qzc1Ny44IDEyNjYuMyA3NDYuOCAxMjcxLjYgNzI0IDEyODIuMkM1NDAuNiAxMzY3LjUgNDI5LjIgMTQ0OS4zIDM3MC41IDE1NDEuNkMzNDUuNCAxNTgxLjEgMzMxLjEgMTYxOCAzMjYgMTY1N0MzMjQuOSAxNjY1LjEgMzIzLjggMTY2OC4yIDMyMi43IDE2NjYuM1pNMzQ4LjYgMTQzNS4xQzM0Ny44IDE0MzMuOCAzNDkuNyAxNDI4LjIgMzU5LjcgMTQwMy41QzM4Ny4yIDEzMzUuMyA0MzAuNiAxMjY3LjEgNTEyLjkgMTE2Mi41QzUyMi45IDExNDkuOCA1MzcgMTEzMS45IDU0NC4zIDExMjIuNUM1NTEuNSAxMTEzLjIgNTYwLjkgMTEwMS43IDU2NSAxMDk3QzU2OS4yIDEwOTIuMyA1NzUuOCAxMDgzLjkgNTc5LjcgMTA3OC40QzU4My43IDEwNzIuOCA1OTEuMyAxMDYyLjkgNTk2LjcgMTA1Ni40QzYwMi4xIDEwNDkuOCA2MDkuMiAxMDQwLjkgNjEyLjQgMTAzNi41QzYxNS43IDEwMzIuMSA2MjMuNiAxMDIxLjUgNjMwIDEwMTNDNjgwLjIgOTQ2LjIgNzM3LjkgODUzLjQgNzczLjMgNzgyLjVDODM0LjMgNjYwLjQgODY4LjcgNTU3LjQgODg1IDQ0OUM5MDYuNSAzMDUuNiA4ODkuNSAxNzIuNSA4MzMgNDJDODE4LjUgOC40IDgxOC4zIDggODE5LjggOEM4MjMuNSA4IDg3My45IDU2LjcgODk5IDg0LjVDOTY2LjIgMTU4LjkgMTAxMy41IDIzNC40IDEwNDQuMiAzMTYuNUMxMDc3LjkgNDA2LjMgMTA4Ni42IDQ5Mi4xIDEwNzAuOSA1NzkuOUMxMDU3LjQgNjU1LjkgMTAyOC40IDcyOC41IDk4My43IDc5OC41QzkzNC44IDg3NS4yIDg3My43IDk0NC45IDc5OS42IDEwMDguNkM3NzIuNSAxMDMxLjkgNzQ2LjEgMTA1NCA3MzguNSAxMDU5LjhDNzM1LjIgMTA2Mi4zIDcyNiAxMDY5LjcgNzE4IDEwNzYuMUM3MTAgMTA4Mi42IDY5NC41IDEwOTUuMSA2ODMuNSAxMTAzLjlDNjcyLjUgMTExMi43IDY1OS40IDExMjMuMyA2NTQuMyAxMTI3LjRDNjQ5LjMgMTEzMS42IDY0MS4zIDExMzcuOCA2MzYuNiAxMTQxLjJDNjE5LjEgMTE1NC4yIDU1NCAxMjA3LjYgNTQwLjEgMTIyMC40QzUzNS45IDEyMjQuMyA1MjMuMSAxMjM1LjggNTExLjcgMTI0NS44QzQ4OS4xIDEyNjUuOSA0NTEuNSAxMzAzLjcgNDMwLjEgMTMyNy45QzQyMi42IDEzMzYuMyA0MTMuOCAxMzQ2LjIgNDEwLjYgMTM0OS45QzM5OS4xIDEzNjIuOCAzNjkuMyAxNDAzLjkgMzYwLjEgMTQxOS40QzM1MC45IDE0MzUuMSAzNDkuNiAxNDM2LjggMzQ4LjYgMTQzNS4xWk0yNTcgODc1LjNDMjQxLjMgODcyLjUgMjMzLjEgODY4LjQgMjI0LjIgODU5LjFMMjE4IDg1Mi42TDIwNi4yIDg1Mi41QzE5My44IDg1Mi41IDE4NC45IDg0OS45IDE4MC40IDg0NC45QzE3OC4zIDg0Mi41IDE3OC45IDg0Mi4zIDE5MC4xIDg0MS42QzIwNy42IDg0MC42IDIxMi43IDgzOC40IDIyNi41IDgyNi42QzIzNy43IDgxNi45IDI0OS4xIDgxMC42IDI1OC4zIDgwOC45QzI3MSA4MDYuNiAzMDAuNyA4MTEuNSAzMjIuMSA4MTkuNUMzNDEuMyA4MjYuNiAzNDguMSA4MjcuMiAzNjYuNSA4MjMuNEMzODEuOCA4MjAuMyAzNzQgODI3LjYgMzU2IDgzMy4xQzM0Ny43IDgzNS42IDMyNy4xIDgzNi4zIDMyMS44IDgzNC4yQzMxNy43IDgzMi41IDMxNi4yIDgzMy42IDMxNS4xIDgzOS4xQzMxMS45IDg1My44IDI5OC40IDg2Ni45IDI4MSA4NzIuNEMyNzMuNSA4NzQuOCAyNjEuNyA4NzYuMiAyNTcgODc1LjNaTTI3OS42IDg2NS43QzI4OSA4NjAuOSAyOTYuMyA4NTAgMjk4IDgzOC4yQzI5OSA4MzEuMyAyOTcuNiA4MjguNSAyOTIuOCA4MjcuN0MyOTEgODI3LjQgMjg4LjMgODI2LjggMjg2LjkgODI2LjVDMjgzLjYgODI1LjcgMjgyLjYgODI3LjcgMjg0LjIgODMyQzI4Ny4yIDg0MC42IDI3OS43IDg1NSAyNjkuNiA4NjAuMkMyNjYuNSA4NjEuOCAyNjQuMiA4NjIuMSAyNTguNSA4NjEuOEMyNDUuOCA4NjEuMiAyMzggODU0LjQgMjM3IDg0M0MyMzYuNCA4MzYuNiAyMzQuNyA4MzUuNiAyMzAgODM5QzIyNS45IDg0MS45IDIyNi4yIDg0NC43IDIzMSA4NTEuMUMyMzcuMyA4NTkuNSAyNDYuMiA4NjUuOCAyNTQuNyA4NjhDMjYxLjUgODY5LjcgMjc0IDg2OC42IDI3OS42IDg2NS43WiIvPjwvc3ZnPgo=" width="40" height="61" alt="">
+        <p class="label">Reunião de Mulheres · 07/11 · 15h</p>
+        <h2 id="lead-titulo">Faça parte do <em>Impacto Rosa</em></h2>
+        <p class="lead-sub">Deixe seu contato para receber a confirmação, os lembretes e as novidades dos próximos encontros.</p>
+
+        <label for="lead-nome">Nome completo</label>
+        <input id="lead-nome" name="nome" type="text" autocomplete="name" required minlength="3" maxlength="120" placeholder="Seu nome e sobrenome">
+
+        <label for="lead-whatsapp">WhatsApp com DDD</label>
+        <input id="lead-whatsapp" name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel-national" required placeholder="(16) 99999-9999">
+
+        <label for="lead-email">E-mail</label>
+        <input id="lead-email" name="email" type="email" inputmode="email" autocomplete="email" required maxlength="160" placeholder="voce@email.com">
+
+        <label for="lead-instagram">Perfil do Instagram</label>
+        <div class="lead-at"><span aria-hidden="true">@</span><input id="lead-instagram" name="instagram" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="60" placeholder="seuperfil"></div>
+
+        <!-- Campo-armadilha contra robôs: pessoas não veem nem preenchem -->
+        <div class="lead-hp" aria-hidden="true"><label for="lead-site">Site</label><input id="lead-site" name="site" type="text" tabindex="-1" autocomplete="off"></div>
+
+        <label class="lead-check" for="lead-consent">
+          <input id="lead-consent" name="consentimento" type="checkbox" required>
+          <span>Autorizo o Impacto Rosa e a Casa de Oração a usarem meus dados para falar comigo sobre os encontros.</span>
+        </label>
+
+        <p class="lead-error" id="lead-error" role="alert" hidden></p>
+        <button class="btn btn-main lead-submit" type="submit" id="lead-submit">Quero fazer parte</button>
+        <a class="btn btn-wa lead-fallback" id="lead-fallback" href="#" target="_blank" rel="noopener" hidden>
+          <svg aria-hidden="true"><use href="#i-wa"></use></svg> Enviar meus dados pelo WhatsApp
+        </a>
+      </form>
+
+      <div class="lead-ok" id="lead-ok" hidden>
+        <img class="lead-logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjI5IDE4NjQiPjxwYXRoIGZpbGw9IiNjOTcwN2UiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTQxNy4zIDE4NTIuMkM0MTUuMiAxODQxLjggNDE2LjQgMTgyMi45IDQxOS45IDE4MTAuNkM0MjkuOSAxNzc1LjQgNDU2LjYgMTc0MS42IDQ5MCAxNzIxLjdDNTIxLjcgMTcwMi44IDU1MiAxNjkxIDU4NSAxNjg0LjZDNjEwLjIgMTY3OS43IDYyNi41IDE2NzcuMyA2NTIuNSAxNjc0LjVDNzM0IDE2NjUuOCA3NzAuMSAxNjU5LjQgODEyLjUgMTY0NS44Qzg2OSAxNjI3LjggOTE1LjEgMTYwNC4xIDk0OS40IDE1NzUuM0M5NTMgMTU3Mi4zIDk1NiAxNTcxLjEgOTU2IDE1NzIuNkM5NTYgMTU3NC42IDk0Ny44IDE1OTEuMyA5NDEuOCAxNjAxLjVDOTI1LjEgMTYyOS43IDkxMCAxNjQ5IDg4OSAxNjY4LjdDODUxLjUgMTcwMy44IDc5OC41IDE3MzAuNiA3NTAgMTczOS4xQzcyMC4xIDE3NDQuMyA3MjEuNCAxNzQ0LjIgNjQ1IDE3NDVDNTU0LjMgMTc0NiA1NDIuNSAxNzQ3IDUxNCAxNzU2LjJDNDkwIDE3NjQgNDY2LjMgMTc3Ny41IDQ1My4yIDE3OTAuOUM0MzguNiAxODA1LjkgNDI1LjUgMTgzMC45IDQyMC42IDE4NTMuMkM0MTkuNyAxODU3LjEgNDE4LjIgMTg1Ni43IDQxNy4zIDE4NTIuMlpNMzg3LjYgMTgyOS4xQzM4Ny4zIDE4MjguNiAzODQuNyAxODIxLjcgMzgxLjkgMTgxMy45QzM2OS44IDE3NzkuNSAzNzAuNCAxNzUzLjcgMzg0LjEgMTcxMy4yQzQwNi43IDE2NDYuOSA0NzUuMyAxNTkwLjIgNTg2LjUgMTU0NkM2MTAuMyAxNTM2LjYgNjYzLjMgMTUyMCA3MDYuNSAxNTA4LjVDNzIyLjIgMTUwNC4zIDc3NC45IDE0OTAgNzk0IDE0ODQuNkM4ODkuNiAxNDU4IDk3NSAxNDE3LjIgMTA0NyAxMzYzLjRDMTA3MC4yIDEzNDYuMiAxMTA3LjIgMTMxMi4xIDExMjIuMiAxMjk0LjNDMTEzMS40IDEyODMuNCAxMTMyLjYgMTI4My41IDExMjkgMTI5NC44QzExMDQuNCAxMzcwLjkgMTA1NC44IDE0NDguMiA5OTcgMTUwMC41Qzk0OCAxNTQ0LjcgOTAwLjMgMTU3NS41IDg0NC4xIDE1OTkuMUM3OTUuOSAxNjE5LjQgNzU4LjggMTYyOC42IDY4MiAxNjM5LjVDNTkxLjMgMTY1Mi4yIDU5MiAxNjUyLjEgNTU1IDE2NjEuNUM1MzUuNyAxNjY2LjQgNTA4LjIgMTY3Ni4yIDQ5Ny41IDE2ODJDNDkwLjYgMTY4NS44IDQ4Ny4zIDE2ODcuNSA0ODIgMTY4OS44QzQ3OS41IDE2OTAuOSA0NzAuMyAxNjk2LjkgNDYxLjUgMTcwMy4xQzQxNy40IDE3MzQuMyAzOTUuOCAxNzY5LjYgMzkwLjggMTgxOC4yQzM4OS43IDE4MjkuMSAzODkgMTgzMS40IDM4Ny42IDE4MjkuMVpNMzQ4LjIgMTcyNi40QzM0NC42IDE3MTEuOSAzNDQuMyAxNjg2LjcgMzQ3LjUgMTY2NS41QzM1Ni43IDE2MDUuMiAzOTggMTUzNi44IDQ1OCAxNDgyLjdDNDkzLjYgMTQ1MC41IDUzOS45IDE0MTcuNyA1ODMgMTM5NEM1ODkuMyAxMzkwLjUgNTk4LjEgMTM4NS41IDYwMi41IDEzODIuOUM2MDYuOSAxMzgwLjMgNjI1LjQgMTM3MC45IDY0My41IDEzNjEuOEM2NzUuMSAxMzQ2LjIgNjg5LjEgMTMzOS42IDczNyAxMzE4Qzg1Ny45IDEyNjMuNCA5MTguNiAxMjMwLjMgOTgxLjUgMTE4NC43QzEwMzguNSAxMTQzLjMgMTA5MS41IDEwOTEuMSAxMTMyLjQgMTAzNS44QzExNjYuNyA5ODkuNiAxMTk0LjggOTQwLjMgMTIxMy4yIDg5NC42QzEyMTguNSA4ODEuMyAxMjE5IDg4MC40IDEyMjAuMSA4ODIuMUMxMjIyLjUgODg2IDEyMjAuOSA5NDEuMyAxMjE3LjQgOTcwLjVDMTIwNi4xIDEwNjYuOCAxMTY3LjEgMTE2NS45IDExMTEuNyAxMjM5LjVDMTA4NS4xIDEyNzQuOCAxMDQ2LjcgMTMxMi42IDEwMTIgMTMzNy43QzkzMS4yIDEzOTYgODY4LjIgMTQyMi45IDY5OCAxNDcxLjRDNjE3LjcgMTQ5NC4yIDU1NCAxNTE5LjUgNTEwIDE1NDUuOEM0NjkgMTU3MC4zIDQ0Ni42IDE1ODcuMyA0MTguNyAxNjE0LjlDMzgxLjYgMTY1MS41IDM2MC40IDE2ODUuNSAzNTIuNCAxNzIxLjJDMzUwLjQgMTczMC4yIDM0OS40IDE3MzEuNCAzNDguMiAxNzI2LjRaTTI2OC4zIDE2NjkuN0MyMjQgMTYyMy4zIDE4NS41IDE1NDcuNCAxNzEuNSAxNDc4LjVDMTY1LjkgMTQ1MC44IDE2NC42IDE0MzguMyAxNjQuNiAxNDEwQzE2NC42IDEzNTguMyAxNzEuMSAxMzI4LjggMTk4LjUgMTI1OEMyMzAuNCAxMTc1LjUgMjM3LjQgMTEyOS44IDIyNi4xIDEwNzguM0MyMTkuOCAxMDQ5LjUgMTk5LjYgMTAxNy40IDE3Ni40IDk5OS41QzE0NSA5NzUuMiAxMjYuNiA5NjggOTYuMSA5NjhDNTguOSA5NjggNDEuNCA5NzguMiAzNSAxMDAzLjhDMzMuOSAxMDA4IDMzIDEwMTMuNiAzMyAxMDE2LjJDMzMgMTAyMi43IDMxLjcgMTAyMi45IDI2LjkgMTAxNi44QzYuOCA5OTEuNSAyLjMgOTQ2LjUgMTYuNCA5MTEuNUMzMS44IDg3My4xIDgzIDgzNy45IDEyNi44IDgzNS43QzEzNC40IDgzNS4zIDEzNC45IDgzNC44IDEzNiA4MjcuM0MxNDAuMiA3OTcgMTc2LjIgNzU3LjMgMjE4LjkgNzM1LjZDMjYwLjEgNzE0LjcgMzAwLjIgNzA2LjIgMzUxLjQgNzA3LjNDMzg1LjEgNzA4IDQxMi4zIDcxMi40IDQ0My41IDcyMi4xQzQ3OS40IDczMy4zIDQ4Ni44IDczNS43IDUwMyA3NDEuN0M1MTUuNCA3NDYuNCA1MjQuNyA3NDkuMSA1MzQuOSA3NTEuMUM1NTAuNCA3NTQuMiA1NTAuNiA3NTQuMyA1NDkuNSA3NTYuMUM1NDguNSA3NTcuNiA1NDAuNSA3NTYuOSA1MTggNzUzLjVDNTA4LjkgNzUyLjIgNDk0LjggNzUwLjEgNDg2LjcgNzQ5QzQ3OC41IDc0Ny44IDQ2My4zIDc0NS40IDQ1Mi45IDc0My41QzQzMi4yIDczOS43IDQyMyA3MzkuMSA0MjMgNzQxLjRDNDIzIDc0My4xIDQyNS41IDc0NCA0NDEgNzQ3LjZDNDU1LjYgNzUxIDQ2Mi4xIDc1My4yIDQ4MS4xIDc2MS4zQzQ5Ni4xIDc2Ny43IDUwMSA3NjkuMyA1MzUgNzc4LjRDNTU3LjkgNzg0LjUgNTYwLjggNzg1IDU4NC4yIDc4NS43QzU5NS43IDc4NiA2MDUgNzg2LjYgNjA1IDc4N0M2MDUgNzg4LjEgNjAwLjUgNzg5LjkgNTg0LjkgNzk1LjFDNTY4LjggODAwLjUgNTU5LjcgODAxLjcgNTMyLjYgODAyLjNDNTIzLjkgODAyLjUgNTE4LjUgODAzLjEgNTE4LjMgODAzLjdDNTE4LjEgODA0LjMgNTIxLjYgODA3LjMgNTI2LjIgODEwLjNDNTU1LjMgODI5LjggNTc3LjkgODU0LjMgNTkwLjggODgwLjRDNjAwIDg5OC44IDYwOC4zIDkyMy4xIDYwNS40IDkyM0M2MDQuOSA5MjMgNjAyLjUgOTE5LjYgNjAwLjEgOTE1LjVDNTk0LjQgOTA1LjkgNTg4LjMgODk5IDU3MS4zIDg4M0M1NTEgODYzLjcgNTQ3LjkgODYyLjIgNTU3LjIgODc2LjJDNTc3LjEgOTA2IDU4OC41IDk1NC4xIDU4NC4xIDk4OS43QzU4Mi4yIDEwMDQuNyA1NjcuNiAxMDUzIDU2NC45IDEwNTNDNTYzLjQgMTA1MyA1NjMuOSAxMDM5LjQgNTY1LjUgMTAzNS4zQzU2OS43IDEwMjQuNiA1NzAuOCAxMDExLjEgNTY5IDk5NC42QzU2Ny40IDk4MC45IDU2NC43IDk3OCA1NjMuNSA5ODguOEM1NjEuMSAxMDEwIDU1Mi41IDEwMzkuNiA1NDEuNyAxMDYzLjlDNTI5LjkgMTA5MC44IDUyOSAxMDkyLjIgNTAzLjIgMTEyNC44QzQ5Ny44IDExMzEuNiA0OTcuNCAxMTI4LjUgNTAyLjQgMTExNy45QzUwNy40IDExMDcuMiA1MTIuMSAxMDkzLjcgNTE3LjkgMTA3My41QzUyNC45IDEwNDkuNCA1MjUuNCAxMDQ1LjUgNTI1LjQgMTAxNi41TDUyNS41IDk5MC41TDUyMS4zIDk3NC4zQzUxNi4zIDk1NS4zIDUxMy40IDk0Ny4xIDUwOCA5MzcuM0M1MDEuOCA5MjYgNTAzIDkyMy4zIDUxMC4xIDkzMi4yQzUyNi4zIDk1Mi41IDU0MC4zIDk3OS41IDU0Mi42IDk5NC42QzU0My41IDEwMDEuMiA1NDQuNyAxMDA0IDU0Ni40IDEwMDRDNTQ4LjUgMTAwNCA1NDguOCA5OTkuMiA1NDcuOSA5ODBDNTQ2LjYgOTUzLjEgNTQzLjkgOTQzLjIgNTMxLjIgOTE4QzUxMi4zIDg4MC44IDQ5NC45IDg1OS41IDQ2NS43IDgzOC4xQzQ1OC45IDgzMy4xIDQ1OS4xIDgzMS41IDQ2Ni41IDgzMi40QzQ3NS40IDgzMy40IDQ4My41IDgzNy43IDQ5OCA4NDguOUM1MDIuNyA4NTIuNiA1MDkuNiA4NTcuNyA1MTMuNSA4NjAuNUM1MTcuNCA4NjMuMiA1MjIuOCA4NjcuMyA1MjUuNiA4NjkuN0M1MzQuMyA4NzcgNTM1LjMgODc1LjEgNTI4LjYgODY0LjJDNTE3LjkgODQ3IDUwMy42IDgzMS4zIDQ5MC41IDgyMi44QzQ4Ny4yIDgyMC42IDQ4My45IDgxNy43IDQ4My4xIDgxNi4yQzQ4Mi40IDgxNC43IDQ4MSA4MTIuNiA0ODAuMSA4MTEuNkM0NzcuNCA4MDguNCA0NTguNCA3OTYuMyA0NTIuOCA3OTQuMkM0NDkuOSA3OTMuMSA0NDQuMSA3OTAuNSA0NDAgNzg4LjVDNDI1LjcgNzgxLjUgNDEwLjUgNzc0LjggNDAwLjcgNzcxLjRDMzc3LjUgNzYzLjQgMzM3LjkgNzU2IDMxNy4zIDc1NkMzMDguMyA3NTYgMzA2LjQgNzU0LjcgMzEyLjEgNzUyLjdDMzI0LjMgNzQ4LjMgMzMxLjIgNzQ3LjIgMzUyLjMgNzQ2LjFDMzY2LjcgNzQ1LjQgMzY5LjggNzQ0LjggMzY3IDc0M0MzNjQuMSA3NDEuMiAzNTEuNyA3NDAuNSAzMjIuNSA3NDAuNUMyNzUuNCA3NDAuNiAyNDguNiA3NDUuNyAyMTUuMiA3NjEuMUMyMDAuOCA3NjcuNyAxODMuNiA3ODAuOCAxNzAuNiA3OTQuOUMxNTguMiA4MDguNSAxNTEuOCA4MjAuMSAxNDkuNiA4MzMuNUwxNDguNCA4NDAuNUwxNDQuNCA4NDEuMkMxMzcuNSA4NDIuNCAxMzEuOCA4NDQuOSAxMTcuNCA4NTMuMUM5OC42IDg2My43IDk1LjQgODY3LjQgMTA3LjEgODY0LjlDMTIyLjQgODYxLjYgMTQ2LjIgODY3LjcgMTUwLjYgODc2LjFDMTU0LjcgODg0LjEgMTQ5LjggODg2LjggMTI5IDg4OC4yQzExNi45IDg4OSAxMTIuOSA4ODkuNyAxMDQuNSA4OTIuNUM5OSA4OTQuMyA5Mi44IDg5Ni4xIDkwLjcgODk2LjRDODggODk2LjkgODUuMSA4OTguOCA4MC4yIDkwMy4zQzc2LjUgOTA2LjggNjkuNiA5MTIuOCA2NC43IDkxNi44QzUxLjYgOTI3LjcgNDIuMiA5MzkuNiA0NC43IDk0Mi4xQzQ1LjUgOTQyLjkgNDcuNSA5NDEuNiA1MS41IDkzOEM1Ny42IDkzMi40IDY1LjIgOTI4LjUgNzYgOTI1LjNDODIgOTIzLjUgODUuMyA5MjMuMyAxMTggOTIzLjVDMTU3LjcgOTIzLjggMTczLjMgOTI1LjQgMjAwLjUgOTMyLjFDMjYyLjUgOTQ3LjUgMzA4LjEgOTc2LjYgMzQ0IDEwMjMuNkMzNTUuNSAxMDM4LjUgMzUyLjQgMTAzOC4yIDMzOC4yIDEwMjMuMUMzMDAuNCA5ODMgMjUzIDk1OC4yIDE5MS41IDk0Ni40QzE3My4xIDk0Mi45IDE0MS44IDk0Mi40IDEyOCA5NDUuM0MxMDAuMiA5NTEuNCA5NS4xIDk1NSAxMTQuMyA5NTVDMTQ0LjQgOTU1LjEgMTgyLjUgOTYxLjQgMjA0IDk2OS44QzI1My43IDk4OS4xIDI4OS45IDEwMTguOSAzMjEuNyAxMDY2LjVDMzMzLjEgMTA4My43IDMzOC4xIDEwOTQuNSAzNDUuNSAxMTE4LjFDMzU4LjUgMTE1OS41IDM1Ny40IDEyMDMuNCAzNDIuMyAxMjQ5LjVDMzMzLjkgMTI3NSAzMTMuOCAxMzEzLjEgMzEwLjUgMTMwOS44QzMxMC4xIDEzMDkuNCAzMTEuNiAxMzAyLjkgMzEzLjggMTI5NS4zQzMyMC42IDEyNzIuNiAzMjEuOSAxMjY0LjcgMzIzLjIgMTIzOS43QzMyNC43IDEyMTAuNiAzMjIgMTE4MC45IDMxNS41IDExNTYuMUMzMDguNSAxMTI5IDI4MC4zIDEwNzAgMjc0LjQgMTA3MEMyNzIuNSAxMDcwIDI3Mi42IDEwNzEuNSAyNzUuNSAxMDgwLjFDMjg3LjcgMTExNS42IDI5MS4xIDExNDYuNCAyODggMTE5MC41QzI4NS43IDEyMjIuMSAyNzguNyAxMjU4LjEgMjY4LjkgMTI4OC41QzI1Mi40IDEzMzkuOCAyMzguOCAxMzk1LjYgMjM0IDE0MzJDMjIzLjMgMTUxMy4yIDIzNS4zIDE1OTEuNiAyNjguNyAxNjU4LjNDMjczLjkgMTY2OC43IDI3OCAxNjc3LjYgMjc3LjggMTY3OC4yQzI3Ny42IDE2NzguOCAyNzMuMyAxNjc0LjkgMjY4LjMgMTY2OS43Wk0zMjIuNyAxNjY2LjNDMzE5LjcgMTY2MS41IDMxOC43IDE2MDYuOCAzMjEuMyAxNTkwLjRDMzMyLjMgMTUyMS4xIDM3Mi4yIDE0NDMuNiA0MzIuNSAxMzc0LjVDNDU1IDEzNDguOCA0NjIuNSAxMzQwLjggNDg2LjYgMTMxN0M1MjEuNSAxMjgyLjYgNTQ1LjggMTI2MS4xIDU5MiAxMjIzLjhDNjE5LjcgMTIwMS41IDYxOS44IDEyMDEuNCA2OTAuMSAxMTQ4LjNDODMzLjcgMTAzOS44IDkwNi40IDk3Mi4zIDk3NS4zIDg4NEMxMDYxIDc3NC4xIDExMTUuMSA2NDcuOSAxMTMyIDUxOUMxMTMzLjEgNTEwLjUgMTEzNC43IDQ5OS43IDExMzUuNSA0OTVDMTEzNi4yIDQ5MC4zIDExMzcuMSA0ODMuNCAxMTM3LjUgNDc5LjVDMTEzOC4yIDQ3MS4yIDExMzguOCA0NjguOCAxMTQwLjEgNDY5LjJDMTE0My41IDQ3MC4zIDExNjQuMiA1MzIuMSAxMTcyIDU2NC41QzEyMDIuMyA2OTAuMiAxMTkxLjMgODIyLjMgMTE0MS4zIDkzMS41QzExMDIuOCAxMDE1LjUgMTAzNC41IDEwOTYuOCA5NTEuNSAxMTU2LjlDOTEyLjkgMTE4NSA4NTcuMiAxMjE3LjkgODA2LjUgMTI0Mi42Qzc1Ny44IDEyNjYuMyA3NDYuOCAxMjcxLjYgNzI0IDEyODIuMkM1NDAuNiAxMzY3LjUgNDI5LjIgMTQ0OS4zIDM3MC41IDE1NDEuNkMzNDUuNCAxNTgxLjEgMzMxLjEgMTYxOCAzMjYgMTY1N0MzMjQuOSAxNjY1LjEgMzIzLjggMTY2OC4yIDMyMi43IDE2NjYuM1pNMzQ4LjYgMTQzNS4xQzM0Ny44IDE0MzMuOCAzNDkuNyAxNDI4LjIgMzU5LjcgMTQwMy41QzM4Ny4yIDEzMzUuMyA0MzAuNiAxMjY3LjEgNTEyLjkgMTE2Mi41QzUyMi45IDExNDkuOCA1MzcgMTEzMS45IDU0NC4zIDExMjIuNUM1NTEuNSAxMTEzLjIgNTYwLjkgMTEwMS43IDU2NSAxMDk3QzU2OS4yIDEwOTIuMyA1NzUuOCAxMDgzLjkgNTc5LjcgMTA3OC40QzU4My43IDEwNzIuOCA1OTEuMyAxMDYyLjkgNTk2LjcgMTA1Ni40QzYwMi4xIDEwNDkuOCA2MDkuMiAxMDQwLjkgNjEyLjQgMTAzNi41QzYxNS43IDEwMzIuMSA2MjMuNiAxMDIxLjUgNjMwIDEwMTNDNjgwLjIgOTQ2LjIgNzM3LjkgODUzLjQgNzczLjMgNzgyLjVDODM0LjMgNjYwLjQgODY4LjcgNTU3LjQgODg1IDQ0OUM5MDYuNSAzMDUuNiA4ODkuNSAxNzIuNSA4MzMgNDJDODE4LjUgOC40IDgxOC4zIDggODE5LjggOEM4MjMuNSA4IDg3My45IDU2LjcgODk5IDg0LjVDOTY2LjIgMTU4LjkgMTAxMy41IDIzNC40IDEwNDQuMiAzMTYuNUMxMDc3LjkgNDA2LjMgMTA4Ni42IDQ5Mi4xIDEwNzAuOSA1NzkuOUMxMDU3LjQgNjU1LjkgMTAyOC40IDcyOC41IDk4My43IDc5OC41QzkzNC44IDg3NS4yIDg3My43IDk0NC45IDc5OS42IDEwMDguNkM3NzIuNSAxMDMxLjkgNzQ2LjEgMTA1NCA3MzguNSAxMDU5LjhDNzM1LjIgMTA2Mi4zIDcyNiAxMDY5LjcgNzE4IDEwNzYuMUM3MTAgMTA4Mi42IDY5NC41IDEwOTUuMSA2ODMuNSAxMTAzLjlDNjcyLjUgMTExMi43IDY1OS40IDExMjMuMyA2NTQuMyAxMTI3LjRDNjQ5LjMgMTEzMS42IDY0MS4zIDExMzcuOCA2MzYuNiAxMTQxLjJDNjE5LjEgMTE1NC4yIDU1NCAxMjA3LjYgNTQwLjEgMTIyMC40QzUzNS45IDEyMjQuMyA1MjMuMSAxMjM1LjggNTExLjcgMTI0NS44QzQ4OS4xIDEyNjUuOSA0NTEuNSAxMzAzLjcgNDMwLjEgMTMyNy45QzQyMi42IDEzMzYuMyA0MTMuOCAxMzQ2LjIgNDEwLjYgMTM0OS45QzM5OS4xIDEzNjIuOCAzNjkuMyAxNDAzLjkgMzYwLjEgMTQxOS40QzM1MC45IDE0MzUuMSAzNDkuNiAxNDM2LjggMzQ4LjYgMTQzNS4xWk0yNTcgODc1LjNDMjQxLjMgODcyLjUgMjMzLjEgODY4LjQgMjI0LjIgODU5LjFMMjE4IDg1Mi42TDIwNi4yIDg1Mi41QzE5My44IDg1Mi41IDE4NC45IDg0OS45IDE4MC40IDg0NC45QzE3OC4zIDg0Mi41IDE3OC45IDg0Mi4zIDE5MC4xIDg0MS42QzIwNy42IDg0MC42IDIxMi43IDgzOC40IDIyNi41IDgyNi42QzIzNy43IDgxNi45IDI0OS4xIDgxMC42IDI1OC4zIDgwOC45QzI3MSA4MDYuNiAzMDAuNyA4MTEuNSAzMjIuMSA4MTkuNUMzNDEuMyA4MjYuNiAzNDguMSA4MjcuMiAzNjYuNSA4MjMuNEMzODEuOCA4MjAuMyAzNzQgODI3LjYgMzU2IDgzMy4xQzM0Ny43IDgzNS42IDMyNy4xIDgzNi4zIDMyMS44IDgzNC4yQzMxNy43IDgzMi41IDMxNi4yIDgzMy42IDMxNS4xIDgzOS4xQzMxMS45IDg1My44IDI5OC40IDg2Ni45IDI4MSA4NzIuNEMyNzMuNSA4NzQuOCAyNjEuNyA4NzYuMiAyNTcgODc1LjNaTTI3OS42IDg2NS43QzI4OSA4NjAuOSAyOTYuMyA4NTAgMjk4IDgzOC4yQzI5OSA4MzEuMyAyOTcuNiA4MjguNSAyOTIuOCA4MjcuN0MyOTEgODI3LjQgMjg4LjMgODI2LjggMjg2LjkgODI2LjVDMjgzLjYgODI1LjcgMjgyLjYgODI3LjcgMjg0LjIgODMyQzI4Ny4yIDg0MC42IDI3OS43IDg1NSAyNjkuNiA4NjAuMkMyNjYuNSA4NjEuOCAyNjQuMiA4NjIuMSAyNTguNSA4NjEuOEMyNDUuOCA4NjEuMiAyMzggODU0LjQgMjM3IDg0M0MyMzYuNCA4MzYuNiAyMzQuNyA4MzUuNiAyMzAgODM5QzIyNS45IDg0MS45IDIyNi4yIDg0NC43IDIzMSA4NTEuMUMyMzcuMyA4NTkuNSAyNDYuMiA4NjUuOCAyNTQuNyA4NjhDMjYxLjUgODY5LjcgMjc0IDg2OC42IDI3OS42IDg2NS43WiIvPjwvc3ZnPgo=" width="40" height="61" alt="">
+        <h2 tabindex="-1" id="lead-ok-titulo">Cadastro <em>feito!</em></h2>
+        <p class="lead-sub"><span id="lead-ok-nome">Que alegria</span>, te esperamos no sábado, 07/11, às 15h, na Casa de Oração. Entrada gratuita.</p>
+        <a class="btn btn-main" href="https://chat.whatsapp.com/GKTrelO5cqL79CvpSnSm1C?mode=gi_t" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-group"></use></svg> Entrar no grupo do WhatsApp
+        </a>
+        <a class="btn btn-wa js-whatsapp" href="https://wa.me/5516991271838?text=Ol%C3%A1%21%20Quero%20participar%20da%20Reuni%C3%A3o%20de%20Mulheres%20do%20Impacto%20Rosa%20de%2007%2F11." target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-wa"></use></svg> Confirmar presença
+        </a>
+        <button class="lead-later" type="button" data-lead-close>Voltar para a página</button>
+      </div>
+    </div>
+  </div>
+
   <!-- VISUALIZADOR DE FOTOS -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada" hidden>
     <button class="lb-close" type="button" aria-label="Fechar">×</button>
@@ -944,6 +1054,7 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
     <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-8-4.7-8-10.6A4.4 4.4 0 0 1 12 7a4.4 4.4 0 0 1 8 2.9c0 5.9-8 10.6-8 10.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
     <symbol id="i-basket" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18l-1.8 9a2 2 0 0 1-2 1.5H6.8a2 2 0 0 1-2-1.5Z"/><path d="M7.5 10 10 4.5M16.5 10 14 4.5"/><path d="M9 13.5v4M12 13.5v4M15 13.5v4"/></g></symbol>
     <symbol id="i-group" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8.5" r="3.2"/><path d="M3 19.5c.6-3.2 3-5 6-5s5.4 1.8 6 5"/><circle cx="17" cy="9.5" r="2.5"/><path d="M16.5 14.6c2.4.2 4 1.7 4.5 4.4"/></g></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></g></symbol>
     <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></g></symbol>
   </svg>
 
@@ -1065,6 +1176,136 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
     if (Math.abs(dx) > 50) mostrar(atual + (dx < 0 ? 1 : -1));
     x0 = null;
   });
+
+  /* ---------- Cadastro (pop-up) ----------
+   * Salva na tabela impacto_rosa_leads do Supabase (projeto Selah). A chave abaixo é
+   * a chave pública: ela só permite CADASTRAR; ler, alterar ou apagar é bloqueado no
+   * banco. Se o envio falhar, a pessoa pode mandar os dados pelo WhatsApp. */
+  var LEADS_URL = 'https://hymbjpnrwhtngkivrqht.supabase.co/rest/v1/impacto_rosa_leads';
+  var LEADS_KEY = 'sb_publishable_xNcKkJczWh0YUUwI2THmDg_VFrhqAuD';
+  var LEAD_MEMO = 'impacto-rosa-cadastro-v1'; // lembra quem já fechou ou se cadastrou
+
+  var lead = document.getElementById('lead');
+  if (lead) {
+    var form = document.getElementById('lead-form');
+    var ok = document.getElementById('lead-ok');
+    var erro = document.getElementById('lead-error');
+    var enviar = document.getElementById('lead-submit');
+    var plano = document.getElementById('lead-fallback');
+    var entradas = {
+      nome: document.getElementById('lead-nome'),
+      whatsapp: document.getElementById('lead-whatsapp'),
+      email: document.getElementById('lead-email'),
+      instagram: document.getElementById('lead-instagram'),
+      consent: document.getElementById('lead-consent'),
+      site: document.getElementById('lead-site')
+    };
+    var focoAntes = null;
+
+    var lembrar = function (v) { try { localStorage.setItem(LEAD_MEMO, v); } catch (e) {} };
+    var jaViu = function () { try { return !!localStorage.getItem(LEAD_MEMO); } catch (e) { return false; } };
+
+    var abrirLead = function () {
+      focoAntes = document.activeElement;
+      lead.hidden = false;
+      document.body.style.overflow = 'hidden';
+      (form.hidden ? ok.querySelector('h2') : entradas.nome).focus();
+    };
+    var fecharLead = function () {
+      lead.hidden = true;
+      document.body.style.overflow = '';
+      if (!jaViu()) lembrar('fechou');
+      if (focoAntes && focoAntes.focus) focoAntes.focus();
+    };
+
+    // Máscara do WhatsApp: (16) 99999-9999
+    entradas.whatsapp.addEventListener('input', function () {
+      var d = entradas.whatsapp.value.replace(/\D/g, '').replace(/^55(?=\d{10,11}$)/, '').slice(0, 11);
+      var m = d.length > 10 ? d.replace(/^(\d{2})(\d{5})(\d{0,4}).*/, '($1) $2-$3')
+        : d.length > 6 ? d.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3')
+        : d.length > 2 ? d.replace(/^(\d{2})(\d*)/, '($1) $2')
+        : d.replace(/^(\d*)/, d ? '($1' : '');
+      entradas.whatsapp.value = m;
+    });
+
+    var limparInsta = function (v) {
+      return v.trim().replace(/^https?:\/\/(www\.)?instagram\.com\//i, '').replace(/^@/, '').replace(/[/?#].*$/, '');
+    };
+
+    var validar = function () {
+      var nome = entradas.nome.value.trim().replace(/\s+/g, ' ');
+      var zap = entradas.whatsapp.value.replace(/\D/g, '');
+      var email = entradas.email.value.trim().toLowerCase();
+      var insta = limparInsta(entradas.instagram.value);
+      var falhas = [];
+      Object.keys(entradas).forEach(function (k) { entradas[k].removeAttribute('aria-invalid'); });
+      if (nome.length < 3 || nome.indexOf(' ') < 0) falhas.push([entradas.nome, 'Escreva seu nome completo (nome e sobrenome).']);
+      if (zap.length < 10 || zap.length > 11) falhas.push([entradas.whatsapp, 'Confira o WhatsApp com DDD, por exemplo (16) 99999-9999.']);
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) falhas.push([entradas.email, 'Confira o e-mail, por exemplo voce@email.com.']);
+      if (insta && !/^[A-Za-z0-9._]{1,30}$/.test(insta)) falhas.push([entradas.instagram, 'O perfil do Instagram só tem letras, números, ponto e _.']);
+      if (!entradas.consent.checked) falhas.push([entradas.consent, 'Marque a autorização para podermos falar com você.']);
+      falhas.forEach(function (f) { f[0].setAttribute('aria-invalid', 'true'); });
+      return { falhas: falhas, dados: { nome: nome, whatsapp: '55' + zap, email: email, instagram: insta || null, consentimento: true } };
+    };
+
+    var mostrarErro = function (msg) { erro.textContent = msg; erro.hidden = false; };
+
+    var concluir = function (nome) {
+      lembrar('cadastrou');
+      document.getElementById('lead-ok-nome').textContent = nome.split(' ')[0];
+      form.hidden = true;
+      ok.hidden = false;
+      ok.querySelector('h2').focus();
+    };
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      erro.hidden = true;
+      plano.hidden = true;
+      if (entradas.site.value) { concluir(entradas.nome.value.trim() || 'Obrigada'); return; } // robô
+      var v = validar();
+      if (v.falhas.length) { mostrarErro(v.falhas[0][1]); v.falhas[0][0].focus(); return; }
+      enviar.disabled = true;
+      enviar.textContent = 'Enviando…';
+      fetch(LEADS_URL, {
+        method: 'POST',
+        headers: { apikey: LEADS_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+        body: JSON.stringify(v.dados)
+      }).then(function (r) {
+        if (!r.ok) throw new Error('status ' + r.status);
+        concluir(v.dados.nome);
+      }).catch(function () {
+        // Plano B: os dados seguem pelo WhatsApp, já escritos na mensagem.
+        var msg = 'Olá! Quero participar da Reunião de Mulheres do Impacto Rosa de 07/11.\n' +
+          'Nome: ' + v.dados.nome + '\nWhatsApp: ' + entradas.whatsapp.value + '\nE-mail: ' + v.dados.email +
+          (v.dados.instagram ? '\nInstagram: @' + v.dados.instagram : '');
+        plano.href = 'https://wa.me/5516991271838?text=' + encodeURIComponent(msg);
+        plano.hidden = false;
+        mostrarErro('Não conseguimos salvar seu cadastro agora. Envie seus dados pelo WhatsApp com o botão abaixo.');
+      }).then(function () {
+        enviar.disabled = false;
+        enviar.textContent = 'Quero fazer parte';
+      });
+    });
+
+    lead.addEventListener('click', function (e) { if (e.target === lead) fecharLead(); });
+    lead.querySelectorAll('[data-lead-close]').forEach(function (b) { b.addEventListener('click', fecharLead); });
+    document.querySelectorAll('[data-lead-open]').forEach(function (b) { b.addEventListener('click', abrirLead); });
+    document.addEventListener('keydown', function (e) {
+      if (lead.hidden) return;
+      if (e.key === 'Escape') fecharLead();
+      if (e.key === 'Tab') { // mantém o foco dentro do cadastro
+        var f = Array.prototype.filter.call(lead.querySelectorAll('button, a[href], input:not([tabindex="-1"])'),
+          function (el) { return el.offsetParent !== null; });
+        if (!f.length) return;
+        if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+        else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+      }
+    });
+
+    // Abre sozinho na tela inicial, só para quem ainda não fechou nem se cadastrou.
+    if (!jaViu()) setTimeout(function () { if (lb.hidden) abrirLead(); }, 2500);
+  }
 
   /* ---------- Botão flutuante ----------
    * Some quando os botões do topo ou o rodapé estão na tela (o contato já

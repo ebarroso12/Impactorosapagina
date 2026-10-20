@@ -34,6 +34,10 @@ rode `python3 scripts/montar_pagina.py` para gerar o `index.html` final. Nunca e
 - Casa de Oração: Instagram `https://www.instagram.com/casadeoracao/`, YouTube
   `https://www.youtube.com/@CasadeOracaoTV`, site `https://casadeoracao.com.br/`
 - Cultos da igreja: quartas às 20h, domingos às 10h e às 18h
+- Cadastro (pop-up da tela inicial): nome completo, WhatsApp, e-mail e Instagram, com consentimento.
+  Fica salvo no Supabase, projeto **selaah**, tabela **`impacto_rosa_leads`**. O site só consegue
+  cadastrar (chave pública); ler, alterar e apagar só pelo painel:
+  https://supabase.com/dashboard/project/hymbjpnrwhtngkivrqht/editor
 
 **PARA TROCAR A DATA DO ENCONTRO**, atualize em todos os lugares de `src/index.html`:
 faixa animada (ticker), selo e data do topo, `data-alvo` e `data-fim` da contagem, bloco final
@@ -66,3 +70,11 @@ evento (JSON-LD), os links do Google Agenda e o arquivo `agenda/reuniao-de-mulhe
 ## Carrossel do Instagram
 As artes ficam em `carrossel/` (PNG 1080×1350) e a legenda em `carrossel/LEGENDA.md`. Para mudar
 um texto, edite `carrossel/carrossel.html` e rode `node scripts/gerar_carrossel.js`.
+
+## Cadastros (leads)
+- Ver e baixar: Supabase → projeto **selaah** → **Table Editor** → `impacto_rosa_leads` → **Export → CSV**.
+- O pop-up abre 2,5 s depois da primeira visita e não volta para quem fechou ou se cadastrou
+  (fica lembrado no navegador). O link "Cadastre-se…" do topo reabre.
+- Se o envio falhar, o pop-up oferece mandar os dados pelo WhatsApp (16) 99127-1838.
+- No link do Claude (artefato) o navegador bloqueia o envio ao Supabase: lá os cadastros vão pelo
+  WhatsApp. No site publicado (GitHub Pages ou Hostinger) eles são salvos no banco.

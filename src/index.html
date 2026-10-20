@@ -155,6 +155,9 @@
           <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Reuni%C3%A3o%20de%20Mulheres%20%C2%B7%20Impacto%20Rosa&amp;dates=20261107T150000%2F20261107T180000&amp;ctz=America%2FSao_Paulo&amp;location=Casa%20de%20Ora%C3%A7%C3%A3o%2C%20Av.%20Alagoas%2C%201163%20-%20Jardim%20Paulista%2C%20Franca%20-%20SP%2C%2014401-402&amp;details=Reuni%C3%A3o%20de%20Mulheres%20do%20Impacto%20Rosa%20com%20W%C3%A2nia%20Arantes%20e%20pilates%20com%20Karen%20Dantes.%20Traga%20um%20prato%20para%20o%20momento%20de%20comunh%C3%A3o.%20Legging%20preta%20ou%20marrom%20e%20camiseta%20rosa.%20Entrada%20gratuita." target="_blank" rel="noopener">Google Agenda</a>
           <a class="js-ics" href="../agenda/reuniao-de-mulheres-impacto-rosa.ics">iPhone / Outlook</a>
         </p>
+        <button class="lead-open" type="button" data-lead-open>
+          <svg aria-hidden="true"><use href="#i-mail"></use></svg> Cadastre-se e receba as novidades do Impacto Rosa
+        </button>
       </div>
     </section>
 
@@ -480,6 +483,59 @@
     </a>
   </div>
 
+  <!-- CADASTRO (POP-UP) -->
+  <div class="lead" id="lead" role="dialog" aria-modal="true" aria-labelledby="lead-titulo" hidden>
+    <div class="lead-card">
+      <button class="lead-close" type="button" aria-label="Fechar cadastro" data-lead-close>×</button>
+
+      <form class="lead-form" id="lead-form" novalidate>
+        <img class="lead-logo" src="../assets/img/logo-aguia.svg" width="40" height="61" alt="">
+        <p class="label">Reunião de Mulheres · 07/11 · 15h</p>
+        <h2 id="lead-titulo">Faça parte do <em>Impacto Rosa</em></h2>
+        <p class="lead-sub">Deixe seu contato para receber a confirmação, os lembretes e as novidades dos próximos encontros.</p>
+
+        <label for="lead-nome">Nome completo</label>
+        <input id="lead-nome" name="nome" type="text" autocomplete="name" required minlength="3" maxlength="120" placeholder="Seu nome e sobrenome">
+
+        <label for="lead-whatsapp">WhatsApp com DDD</label>
+        <input id="lead-whatsapp" name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel-national" required placeholder="(16) 99999-9999">
+
+        <label for="lead-email">E-mail</label>
+        <input id="lead-email" name="email" type="email" inputmode="email" autocomplete="email" required maxlength="160" placeholder="voce@email.com">
+
+        <label for="lead-instagram">Perfil do Instagram</label>
+        <div class="lead-at"><span aria-hidden="true">@</span><input id="lead-instagram" name="instagram" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="60" placeholder="seuperfil"></div>
+
+        <!-- Campo-armadilha contra robôs: pessoas não veem nem preenchem -->
+        <div class="lead-hp" aria-hidden="true"><label for="lead-site">Site</label><input id="lead-site" name="site" type="text" tabindex="-1" autocomplete="off"></div>
+
+        <label class="lead-check" for="lead-consent">
+          <input id="lead-consent" name="consentimento" type="checkbox" required>
+          <span>Autorizo o Impacto Rosa e a Casa de Oração a usarem meus dados para falar comigo sobre os encontros.</span>
+        </label>
+
+        <p class="lead-error" id="lead-error" role="alert" hidden></p>
+        <button class="btn btn-main lead-submit" type="submit" id="lead-submit">Quero fazer parte</button>
+        <a class="btn btn-wa lead-fallback" id="lead-fallback" href="#" target="_blank" rel="noopener" hidden>
+          <svg aria-hidden="true"><use href="#i-wa"></use></svg> Enviar meus dados pelo WhatsApp
+        </a>
+      </form>
+
+      <div class="lead-ok" id="lead-ok" hidden>
+        <img class="lead-logo" src="../assets/img/logo-aguia.svg" width="40" height="61" alt="">
+        <h2 tabindex="-1" id="lead-ok-titulo">Cadastro <em>feito!</em></h2>
+        <p class="lead-sub"><span id="lead-ok-nome">Que alegria</span>, te esperamos no sábado, 07/11, às 15h, na Casa de Oração. Entrada gratuita.</p>
+        <a class="btn btn-main" href="https://chat.whatsapp.com/GKTrelO5cqL79CvpSnSm1C?mode=gi_t" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-group"></use></svg> Entrar no grupo do WhatsApp
+        </a>
+        <a class="btn btn-wa js-whatsapp" href="https://wa.me/5516991271838?text=Ol%C3%A1%21%20Quero%20participar%20da%20Reuni%C3%A3o%20de%20Mulheres%20do%20Impacto%20Rosa%20de%2007%2F11." target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-wa"></use></svg> Confirmar presença
+        </a>
+        <button class="lead-later" type="button" data-lead-close>Voltar para a página</button>
+      </div>
+    </div>
+  </div>
+
   <!-- VISUALIZADOR DE FOTOS -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada" hidden>
     <button class="lb-close" type="button" aria-label="Fechar">×</button>
@@ -504,6 +560,7 @@
     <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-8-4.7-8-10.6A4.4 4.4 0 0 1 12 7a4.4 4.4 0 0 1 8 2.9c0 5.9-8 10.6-8 10.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
     <symbol id="i-basket" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18l-1.8 9a2 2 0 0 1-2 1.5H6.8a2 2 0 0 1-2-1.5Z"/><path d="M7.5 10 10 4.5M16.5 10 14 4.5"/><path d="M9 13.5v4M12 13.5v4M15 13.5v4"/></g></symbol>
     <symbol id="i-group" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8.5" r="3.2"/><path d="M3 19.5c.6-3.2 3-5 6-5s5.4 1.8 6 5"/><circle cx="17" cy="9.5" r="2.5"/><path d="M16.5 14.6c2.4.2 4 1.7 4.5 4.4"/></g></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></g></symbol>
     <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></g></symbol>
   </svg>
 

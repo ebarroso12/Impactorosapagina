@@ -116,6 +116,136 @@
     x0 = null;
   });
 
+  /* ---------- Cadastro (pop-up) ----------
+   * Salva na tabela impacto_rosa_leads do Supabase (projeto Selah). A chave abaixo é
+   * a chave pública: ela só permite CADASTRAR; ler, alterar ou apagar é bloqueado no
+   * banco. Se o envio falhar, a pessoa pode mandar os dados pelo WhatsApp. */
+  var LEADS_URL = 'https://hymbjpnrwhtngkivrqht.supabase.co/rest/v1/impacto_rosa_leads';
+  var LEADS_KEY = 'sb_publishable_xNcKkJczWh0YUUwI2THmDg_VFrhqAuD';
+  var LEAD_MEMO = 'impacto-rosa-cadastro-v1'; // lembra quem já fechou ou se cadastrou
+
+  var lead = document.getElementById('lead');
+  if (lead) {
+    var form = document.getElementById('lead-form');
+    var ok = document.getElementById('lead-ok');
+    var erro = document.getElementById('lead-error');
+    var enviar = document.getElementById('lead-submit');
+    var plano = document.getElementById('lead-fallback');
+    var entradas = {
+      nome: document.getElementById('lead-nome'),
+      whatsapp: document.getElementById('lead-whatsapp'),
+      email: document.getElementById('lead-email'),
+      instagram: document.getElementById('lead-instagram'),
+      consent: document.getElementById('lead-consent'),
+      site: document.getElementById('lead-site')
+    };
+    var focoAntes = null;
+
+    var lembrar = function (v) { try { localStorage.setItem(LEAD_MEMO, v); } catch (e) {} };
+    var jaViu = function () { try { return !!localStorage.getItem(LEAD_MEMO); } catch (e) { return false; } };
+
+    var abrirLead = function () {
+      focoAntes = document.activeElement;
+      lead.hidden = false;
+      document.body.style.overflow = 'hidden';
+      (form.hidden ? ok.querySelector('h2') : entradas.nome).focus();
+    };
+    var fecharLead = function () {
+      lead.hidden = true;
+      document.body.style.overflow = '';
+      if (!jaViu()) lembrar('fechou');
+      if (focoAntes && focoAntes.focus) focoAntes.focus();
+    };
+
+    // Máscara do WhatsApp: (16) 99999-9999
+    entradas.whatsapp.addEventListener('input', function () {
+      var d = entradas.whatsapp.value.replace(/\D/g, '').replace(/^55(?=\d{10,11}$)/, '').slice(0, 11);
+      var m = d.length > 10 ? d.replace(/^(\d{2})(\d{5})(\d{0,4}).*/, '($1) $2-$3')
+        : d.length > 6 ? d.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3')
+        : d.length > 2 ? d.replace(/^(\d{2})(\d*)/, '($1) $2')
+        : d.replace(/^(\d*)/, d ? '($1' : '');
+      entradas.whatsapp.value = m;
+    });
+
+    var limparInsta = function (v) {
+      return v.trim().replace(/^https?:\/\/(www\.)?instagram\.com\//i, '').replace(/^@/, '').replace(/[/?#].*$/, '');
+    };
+
+    var validar = function () {
+      var nome = entradas.nome.value.trim().replace(/\s+/g, ' ');
+      var zap = entradas.whatsapp.value.replace(/\D/g, '');
+      var email = entradas.email.value.trim().toLowerCase();
+      var insta = limparInsta(entradas.instagram.value);
+      var falhas = [];
+      Object.keys(entradas).forEach(function (k) { entradas[k].removeAttribute('aria-invalid'); });
+      if (nome.length < 3 || nome.indexOf(' ') < 0) falhas.push([entradas.nome, 'Escreva seu nome completo (nome e sobrenome).']);
+      if (zap.length < 10 || zap.length > 11) falhas.push([entradas.whatsapp, 'Confira o WhatsApp com DDD, por exemplo (16) 99999-9999.']);
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) falhas.push([entradas.email, 'Confira o e-mail, por exemplo voce@email.com.']);
+      if (insta && !/^[A-Za-z0-9._]{1,30}$/.test(insta)) falhas.push([entradas.instagram, 'O perfil do Instagram só tem letras, números, ponto e _.']);
+      if (!entradas.consent.checked) falhas.push([entradas.consent, 'Marque a autorização para podermos falar com você.']);
+      falhas.forEach(function (f) { f[0].setAttribute('aria-invalid', 'true'); });
+      return { falhas: falhas, dados: { nome: nome, whatsapp: '55' + zap, email: email, instagram: insta || null, consentimento: true } };
+    };
+
+    var mostrarErro = function (msg) { erro.textContent = msg; erro.hidden = false; };
+
+    var concluir = function (nome) {
+      lembrar('cadastrou');
+      document.getElementById('lead-ok-nome').textContent = nome.split(' ')[0];
+      form.hidden = true;
+      ok.hidden = false;
+      ok.querySelector('h2').focus();
+    };
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      erro.hidden = true;
+      plano.hidden = true;
+      if (entradas.site.value) { concluir(entradas.nome.value.trim() || 'Obrigada'); return; } // robô
+      var v = validar();
+      if (v.falhas.length) { mostrarErro(v.falhas[0][1]); v.falhas[0][0].focus(); return; }
+      enviar.disabled = true;
+      enviar.textContent = 'Enviando…';
+      fetch(LEADS_URL, {
+        method: 'POST',
+        headers: { apikey: LEADS_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+        body: JSON.stringify(v.dados)
+      }).then(function (r) {
+        if (!r.ok) throw new Error('status ' + r.status);
+        concluir(v.dados.nome);
+      }).catch(function () {
+        // Plano B: os dados seguem pelo WhatsApp, já escritos na mensagem.
+        var msg = 'Olá! Quero participar da Reunião de Mulheres do Impacto Rosa de 07/11.\n' +
+          'Nome: ' + v.dados.nome + '\nWhatsApp: ' + entradas.whatsapp.value + '\nE-mail: ' + v.dados.email +
+          (v.dados.instagram ? '\nInstagram: @' + v.dados.instagram : '');
+        plano.href = 'https://wa.me/5516991271838?text=' + encodeURIComponent(msg);
+        plano.hidden = false;
+        mostrarErro('Não conseguimos salvar seu cadastro agora. Envie seus dados pelo WhatsApp com o botão abaixo.');
+      }).then(function () {
+        enviar.disabled = false;
+        enviar.textContent = 'Quero fazer parte';
+      });
+    });
+
+    lead.addEventListener('click', function (e) { if (e.target === lead) fecharLead(); });
+    lead.querySelectorAll('[data-lead-close]').forEach(function (b) { b.addEventListener('click', fecharLead); });
+    document.querySelectorAll('[data-lead-open]').forEach(function (b) { b.addEventListener('click', abrirLead); });
+    document.addEventListener('keydown', function (e) {
+      if (lead.hidden) return;
+      if (e.key === 'Escape') fecharLead();
+      if (e.key === 'Tab') { // mantém o foco dentro do cadastro
+        var f = Array.prototype.filter.call(lead.querySelectorAll('button, a[href], input:not([tabindex="-1"])'),
+          function (el) { return el.offsetParent !== null; });
+        if (!f.length) return;
+        if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+        else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+      }
+    });
+
+    // Abre sozinho na tela inicial, só para quem ainda não fechou nem se cadastrou.
+    if (!jaViu()) setTimeout(function () { if (lb.hidden) abrirLead(); }, 2500);
+  }
+
   /* ---------- Botão flutuante ----------
    * Some quando os botões do topo ou o rodapé estão na tela (o contato já
    * está visível) e, no celular, enquanto a pessoa rola para baixo lendo,

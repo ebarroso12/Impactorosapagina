@@ -32,6 +32,7 @@ camiseta rosa e legging preta ou marrom.
 - Botões "Adicionar à agenda" (Google e iPhone/Outlook)
 - Contato: **WhatsApp 24h (16) 99127-1838**, **grupo do WhatsApp**, Instagram e "Como chegar"
 - Botão flutuante do WhatsApp com selo "24h"
+- **Pop-up de cadastro** (nome, WhatsApp, e-mail e Instagram) salvo no Supabase, tabela `impacto_rosa_leads` do projeto selaah
 
 ## Como atualizar
 
