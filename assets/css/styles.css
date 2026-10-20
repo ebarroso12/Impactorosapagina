@@ -58,11 +58,13 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.1; }
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
   gap: 6px 24px; padding-top: 14px; padding-bottom: 14px;
 }
-.brand {
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand-logo { width: 28px; height: auto; }
+.brand-text {
   font-family: var(--serif); font-weight: 700; font-size: 1.6rem; letter-spacing: .04em;
-  text-transform: uppercase; color: var(--rosa-escuro); text-decoration: none; margin: 0;
+  text-transform: uppercase; color: var(--rosa-escuro); margin: 0; line-height: 1;
 }
-.brand span { font-weight: 500; text-transform: none; letter-spacing: 0; }
+.brand-text span { font-weight: 500; text-transform: none; letter-spacing: 0; }
 .nav-list { display: flex; flex-wrap: wrap; gap: 4px 20px; list-style: none; margin: 0; padding: 0; }
 .nav-list a { color: var(--texto-suave); text-decoration: none; font-weight: 500; font-size: .95rem; }
 .nav-list a:hover { color: var(--rosa-escuro); }
@@ -127,21 +129,45 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.1; }
 .split-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--raio); }
 .split p { margin: 0 0 14px; font-size: 1.05rem; }
 
-/* Frase */
-.quote-section {
-  background: linear-gradient(135deg, var(--rosa-escuro), var(--rosa-profundo));
-  color: #fff; padding: 72px 0; text-align: center;
+/* Lema */
+.motto { background: var(--blush); padding: 56px 0; }
+.motto-inner {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: 24px 40px; text-align: center;
 }
-.quote-section blockquote { margin: 0; }
-.quote-section blockquote p {
-  font-family: var(--serif); font-size: clamp(1.7rem, 4.5vw, 2.6rem);
-  line-height: 1.2; margin: 0 0 20px;
+.motto-logo { width: 96px; height: auto; }
+.motto-eyebrow {
+  margin: 0 0 6px; font-size: .8rem; font-weight: 600; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--rosa-escuro);
 }
-.quote-section blockquote footer {
-  font-size: .8rem; letter-spacing: .2em; text-transform: uppercase; opacity: .9;
+.motto-text {
+  margin: 0; color: var(--rosa-profundo); font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 500; max-width: 620px; text-wrap: balance;
+}
+.motto-big {
+  display: block; font-size: clamp(3rem, 9vw, 4.75rem); font-weight: 600;
+  letter-spacing: .03em; text-transform: uppercase; line-height: 1;
 }
 
-/* Próximos encontros */
+/* Wânia Arantes */
+@media (min-width: 900px) {
+  .split-reverse { grid-template-columns: 1.3fr 1fr; }
+}
+.quote { margin: 0 0 20px; padding-left: 20px; border-left: 3px solid var(--rosa); }
+.quote p {
+  margin: 0; font-family: var(--serif); font-size: clamp(1.4rem, 3.2vw, 1.85rem);
+  line-height: 1.25; color: var(--texto);
+}
+.portrait { justify-self: center; max-width: 340px; width: 100%; }
+.portrait img { width: 100%; aspect-ratio: 453 / 700; object-fit: cover; object-position: top; border-radius: var(--raio); }
+
+/* Próximo encontro */
+.event { display: grid; gap: 24px; grid-template-columns: 1fr; align-items: center; }
+@media (min-width: 900px) {
+  .event { grid-template-columns: 340px 1fr; gap: 40px; }
+}
+.event-flyer { max-width: 360px; width: 100%; justify-self: center; }
+.event-flyer img { width: 100%; border-radius: var(--raio); box-shadow: 0 12px 30px rgba(110, 42, 68, .18); }
 .event-card {
   display: grid; grid-template-columns: 1fr; overflow: hidden;
   background: #fff; border-radius: var(--raio);
@@ -156,7 +182,11 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.1; }
   padding: 24px; text-align: center;
 }
 .event-day { margin: 0; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; font-size: .85rem; }
-.event-time { margin: 0; font-family: var(--serif); font-size: 3rem; font-weight: 600; line-height: 1; }
+.event-date-big { margin: 4px 0; font-family: var(--serif); font-size: 3.5rem; font-weight: 600; line-height: 1; }
+.event-date-big span { font-size: 1.8rem; }
+.event-time { margin: 0; font-weight: 700; font-size: 1.25rem; }
+.event-card.sem-data { grid-template-columns: 1fr; }
+.event-card.sem-data .event-when { display: none; }
 .event-body { padding: 28px; }
 .event-body h3 { margin: 0 0 6px; font-size: 1.9rem; color: var(--rosa-escuro); }
 .event-date { margin: 0 0 14px; font-weight: 600; }
@@ -171,7 +201,11 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.1; }
 
 /* Rodapé */
 .site-footer { background: var(--rosa-profundo); color: #fff; padding: 56px 0 24px; }
-.site-footer .brand { color: #fff; }
+.site-footer .brand-text { color: #fff; }
+.footer-logos { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 14px; margin-bottom: 10px; }
+.footer-logo-aguia { width: 34px; height: auto; filter: brightness(0) invert(1); }
+.footer-divider { width: 1px; align-self: stretch; background: rgba(255, 255, 255, .5); }
+.footer-logo-casa { width: 96px; height: auto; filter: brightness(0) invert(1); }
 .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; }
 .footer-inner p { margin: 0 0 8px; }
 .footer-inner address { font-style: normal; opacity: .92; }
@@ -206,7 +240,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.1; }
    último conteúdo nunca fique embaixo dele. */
 @media (max-width: 640px) {
   :root { --float-size: 48px; --float-gap: 14px; }
-  .section, .quote-section { padding: 56px 0; }
+  .section, .motto { padding: 56px 0; }
   .site-footer { padding-bottom: calc(var(--float-size) + var(--float-gap) * 2); }
   .cta-group .btn, .event-actions .btn, .footer-actions .btn { width: 100%; }
   .footer-contact, .footer-actions { width: 100%; }

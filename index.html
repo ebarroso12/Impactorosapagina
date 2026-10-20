@@ -4,23 +4,54 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Impacto Rosa | Casa de Oração Franca</title>
-  <meta name="description" content="Impacto Rosa: encontro de mulheres na Casa de Oração Franca. Sábados às 16h, Av. Alagoas, 1163, Franca/SP. Fale com a equipe pelo WhatsApp.">
+  <meta name="description" content="Impacto Rosa: encontro de mulheres na Casa de Oração Franca. Próximo encontro: sábado, 7 de novembro, às 15h, Av. Alagoas, 1163, Franca/SP.">
   <meta name="theme-color" content="#b04a6c">
+  <link rel="icon" href="assets/img/logo-aguia.svg" type="image/svg+xml">
+  <meta property="og:title" content="Impacto Rosa | Casa de Oração Franca">
+  <meta property="og:description" content="Próximo encontro: sábado, 7 de novembro, às 15h. Av. Alagoas, 1163, Franca/SP.">
+  <meta property="og:image" content="assets/img/flyer-impacto-rosa.jpg">
+  <meta property="og:locale" content="pt_BR">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Dados do evento para o Google (EDITAR junto com as datas da página) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Impacto Rosa",
+    "startDate": "2026-11-07T15:00:00-03:00",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "location": {
+      "@type": "Place",
+      "name": "Casa de Oração Franca",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Alagoas, 1163",
+        "addressLocality": "Franca",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      }
+    },
+    "organizer": { "@type": "Organization", "name": "Casa de Oração Franca" }
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="#inicio">Impacto <span>Rosa</span></a>
+      <a class="brand" href="#inicio">
+        <img class="brand-logo" src="assets/img/logo-aguia.svg" width="28" height="42" alt="">
+        <span class="brand-text">Impacto <span>Rosa</span></span>
+      </a>
       <nav aria-label="Navegação principal">
         <ul class="nav-list">
           <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#encontros">Encontros</a></li>
+          <li><a href="#encontros">Próximo encontro</a></li>
           <li><a href="#galeria">Fotos</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
@@ -37,7 +68,8 @@
           <h1>Impacto <span>Rosa</span></h1>
           <p class="lead">Um encontro de mulheres para viver a Palavra, adorar e acolher umas às outras.</p>
           <p class="hero-info">
-            <span>Sábados · 16h</span>
+            <!-- EDITAR: data do próximo encontro (some sozinha depois que passar; ver data-ate) -->
+            <span class="js-data-encontro" data-ate="2026-11-07T23:59:00-03:00">Próximo encontro: sábado, 7/11 · 15h</span>
             <span>Av. Alagoas, 1163, Franca/SP</span>
           </p>
           <div class="cta-group">
@@ -54,9 +86,23 @@
           </div>
         </div>
         <figure class="hero-photo">
-          <img src="assets/img/acolhimento.jpg" width="940" height="719"
+          <img src="assets/img/acolhimento.jpg" width="1200" height="800"
                alt="Mulheres de camiseta rosa se abraçam e oram juntas durante um encontro do Impacto Rosa.">
         </figure>
+      </div>
+    </section>
+
+    <!-- LEMA -->
+    <section class="motto" aria-labelledby="lema">
+      <div class="container motto-inner">
+        <img class="motto-logo" src="assets/img/logo-aguia.svg" width="120" height="182" alt="">
+        <div>
+          <p class="motto-eyebrow">Visão de Águia</p>
+          <h2 id="lema" class="motto-text">
+            <span class="motto-big">Águias</span>
+            não foram feitas para viver presas no chão!
+          </h2>
+        </div>
       </div>
     </section>
 
@@ -64,7 +110,7 @@
     <section id="sobre" class="section">
       <div class="container split">
         <figure class="split-photo">
-          <img src="assets/img/ministracao.jpg" width="940" height="719" loading="lazy"
+          <img src="assets/img/ministracao.jpg" width="1200" height="800" loading="lazy"
                alt="Ministração no palco durante o Impacto Rosa.">
         </figure>
         <div>
@@ -79,51 +125,70 @@
       </div>
     </section>
 
-    <!-- FRASE -->
-    <section class="quote-section" aria-label="Frase">
-      <div class="container narrow">
-        <blockquote>
-          <p>A mulher que cultiva gratidão encontra força onde outras encontram motivos para desistir.</p>
-          <footer>Wânia Arantes</footer>
-        </blockquote>
+    <!-- WÂNIA ARANTES -->
+    <section class="section section-alt" aria-labelledby="wania-titulo">
+      <div class="container split split-reverse">
+        <div>
+          <p class="eyebrow">Palavras de</p>
+          <h2 id="wania-titulo">Wânia Arantes</h2>
+          <blockquote class="quote">
+            <p>A mulher que cultiva gratidão encontra força onde outras encontram motivos para desistir.</p>
+          </blockquote>
+          <blockquote class="quote">
+            <p>Você não vê uma árvore gritando que vai dar frutos… ela é silenciosa.</p>
+          </blockquote>
+        </div>
+        <figure class="portrait">
+          <img src="assets/img/wania-arantes.jpg" width="453" height="900" loading="lazy"
+               alt="Wânia Arantes sorrindo, de blusa rosa.">
+        </figure>
       </div>
     </section>
 
-    <!-- PRÓXIMOS ENCONTROS -->
-    <section id="encontros" class="section section-alt" aria-labelledby="encontros-titulo">
+    <!-- PRÓXIMO ENCONTRO -->
+    <section id="encontros" class="section" aria-labelledby="encontros-titulo">
       <div class="container">
-        <h2 id="encontros-titulo">Próximos encontros</h2>
+        <h2 id="encontros-titulo">Próximo encontro</h2>
         <p class="section-intro">
-          Os encontros acontecem aos sábados, às 16h. Fale com a equipe pelo WhatsApp para
-          confirmar a data do próximo encontro e garantir sua presença.
+          Confirme sua presença e tire suas dúvidas com a nossa equipe pelo WhatsApp.
         </p>
 
-        <div class="event-card">
-          <div class="event-when">
-            <p class="event-day">Sábado</p>
-            <p class="event-time">16h</p>
-          </div>
-          <div class="event-body">
-            <h3>Impacto Rosa</h3>
-            <!-- EDITAR: quando a data estiver definida, troque o texto abaixo, ex.: "Sábado, 7 de novembro" -->
-            <p class="event-date">Próxima data: confirme com a equipe</p>
-            <address class="event-place">
-              Casa de Oração Franca<br>
-              Av. Alagoas, 1163, Franca/SP<br>
-              <a href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Alagoas%2C%201163%2C%20Franca%20-%20SP"
-                 target="_blank" rel="noopener noreferrer">Ver no mapa</a>
-            </address>
-            <div class="event-actions">
-              <a class="btn btn-primary js-whatsapp"
-                 href="https://wa.me/5516991271838?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20Impacto%20Rosa."
-                 target="_blank" rel="noopener noreferrer">
-                Quero participar
-              </a>
-              <a class="btn btn-outline js-whatsapp"
-                 href="https://wa.me/5516991271838?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20Impacto%20Rosa."
-                 target="_blank" rel="noopener noreferrer">
-                Fale com a equipe
-              </a>
+        <div class="event">
+          <figure class="event-flyer">
+            <img src="assets/img/flyer-impacto-rosa.jpg" width="800" height="1001" loading="lazy"
+                 alt="Arte do Impacto Rosa: Wânia Arantes de blazer branco, com o texto Impacto Rosa, Av. Alagoas 1163, Franca/SP.">
+          </figure>
+
+          <div class="event-card">
+            <div class="event-when">
+              <!-- EDITAR: data e horário do próximo encontro -->
+              <p class="event-day">Sábado</p>
+              <p class="event-date-big">07<span>/11</span></p>
+              <p class="event-time">15h</p>
+            </div>
+            <div class="event-body">
+              <h3>Impacto Rosa</h3>
+              <p class="event-date js-data-encontro" data-ate="2026-11-07T23:59:00-03:00">
+                Sábado, 7 de novembro de 2026, às 15h
+              </p>
+              <address class="event-place">
+                Casa de Oração Franca<br>
+                Av. Alagoas, 1163, Franca/SP<br>
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Alagoas%2C%201163%2C%20Franca%20-%20SP"
+                   target="_blank" rel="noopener noreferrer">Ver no mapa</a>
+              </address>
+              <div class="event-actions">
+                <a class="btn btn-primary js-whatsapp"
+                   href="https://wa.me/5516991271838?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20Impacto%20Rosa."
+                   target="_blank" rel="noopener noreferrer">
+                  Quero participar
+                </a>
+                <a class="btn btn-outline js-whatsapp"
+                   href="https://wa.me/5516991271838?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20Impacto%20Rosa."
+                   target="_blank" rel="noopener noreferrer">
+                  Fale com a equipe
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -131,15 +196,17 @@
     </section>
 
     <!-- GALERIA -->
-    <section id="galeria" class="section" aria-labelledby="galeria-titulo">
+    <section id="galeria" class="section section-alt" aria-labelledby="galeria-titulo">
       <div class="container">
         <h2 id="galeria-titulo">Momentos do Impacto Rosa</h2>
         <ul class="gallery">
-          <li><img src="assets/img/acolhimento.jpg" width="940" height="719" loading="lazy"
+          <li><img src="assets/img/acolhimento.jpg" width="1200" height="800" loading="lazy"
                    alt="Mulheres oram juntas e se acolhem durante o encontro."></li>
-          <li><img src="assets/img/ministracao.jpg" width="940" height="719" loading="lazy"
+          <li><img src="assets/img/ministracao.jpg" width="1200" height="800" loading="lazy"
                    alt="Ministração com microfone no palco."></li>
-          <li><img src="assets/img/conversa.jpg" width="940" height="719" loading="lazy"
+          <li><img src="assets/img/palavra.jpg" width="899" height="575" loading="lazy"
+                   alt="Wânia Arantes lê a Palavra no púlpito; no telão, a mensagem sobre permanecer e produzir frutos."></li>
+          <li><img src="assets/img/conversa.jpg" width="1200" height="801" loading="lazy"
                    alt="Convidada sentada no palco com a camiseta do Impacto Rosa."></li>
         </ul>
       </div>
@@ -149,13 +216,18 @@
   <!-- RODAPÉ -->
   <footer id="contato" class="site-footer">
     <div class="container footer-inner">
-      <div>
-        <p class="brand">Impacto <span>Rosa</span></p>
+      <div class="footer-brand">
+        <div class="footer-logos">
+          <img class="footer-logo-aguia" src="assets/img/logo-aguia.svg" width="40" height="61" alt="">
+          <p class="brand-text">Impacto <span>Rosa</span></p>
+          <span class="footer-divider" aria-hidden="true"></span>
+          <img class="footer-logo-casa" src="assets/img/logo-casa-de-oracao.svg" width="96" height="55"
+               alt="Casa de Oração Franca">
+        </div>
         <p class="footer-tagline">Visão de Águia</p>
         <address>
           Casa de Oração Franca<br>
-          Av. Alagoas, 1163, Franca/SP<br>
-          Sábados · 16h
+          Av. Alagoas, 1163, Franca/SP
         </address>
       </div>
       <div class="footer-contact">

@@ -22,6 +22,19 @@
   var ano = document.getElementById('ano');
   if (ano) ano.textContent = new Date().getFullYear();
 
+  // Depois que o encontro passa (data-ate), a data some para a página não
+  // anunciar um encontro antigo enquanto a próxima data não é cadastrada.
+  document.querySelectorAll('.js-data-encontro').forEach(function (el) {
+    if (new Date() > new Date(el.getAttribute('data-ate'))) {
+      el.textContent = 'Próximo encontro: confirme a data com a equipe';
+    }
+  });
+  var cartao = document.querySelector('.event-card');
+  var dataEncontro = document.querySelector('.js-data-encontro');
+  if (cartao && dataEncontro && new Date() > new Date(dataEncontro.getAttribute('data-ate'))) {
+    cartao.classList.add('sem-data');
+  }
+
   /*
    * Botão flutuante. Ele fica escondido quando:
    *   - os botões do topo (hero) ou o rodapé estão na tela, pois ali o
