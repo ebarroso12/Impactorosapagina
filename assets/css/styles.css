@@ -1,5 +1,6 @@
 /* Paleta inspirada nas artes do Impacto Rosa: blush, rosa antigo e malva. */
 :root {
+  color-scheme: light;
   --rosa: #c25a7c;
   --rosa-escuro: #9c3d5f;     /* texto e botões: contraste AA sobre branco e blush */
   --rosa-profundo: #6e2a44;   /* rodapé */
@@ -43,7 +44,11 @@ a { color: var(--rosa-escuro); }
 
 h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.1; }
 
-.container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.container {
+  width: 100%; max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
 .narrow { max-width: 760px; }
 
 .skip-link {
