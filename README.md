@@ -1,10 +1,12 @@
 # Impacto Rosa · Casa de Oração Franca
 
-Página do **Impacto Rosa**, o encontro de mulheres criado pela apóstola **Wânia Arantes** na
-Casa de Oração Franca.
+Página do **Culto do Impacto Rosa**, o movimento de mulheres idealizado pela pastora
+**Wânia Arantes** na Casa de Oração Franca.
 
-**Próximo encontro:** sábado, **7 de novembro de 2026, às 15h**, na Casa de Oração,
-Av. Alagoas, 1163, Jardim Paulista, Franca-SP, 14401-402.
+**Próximo culto:** sábado, **7 de novembro de 2026, às 15h**, na Casa de Oração,
+Av. Alagoas, 1163, Jardim Paulista, Franca-SP, 14401-402. **Entrada gratuita.**
+Pilates com Karen Dantes, momento de comunhão (cada mulher leva um prato) e paleta do dia:
+camiseta rosa e legging preta ou marrom.
 
 ## Arquivos
 
@@ -16,6 +18,8 @@ Av. Alagoas, 1163, Jardim Paulista, Franca-SP, 14401-402.
 | `scripts/montar_pagina.py` | Junta o código-fonte e gera o `index.html` final |
 | `docs/COMANDO-PARA-O-CLAUDE.md` | Dados oficiais, o comando para ajustar a página com o Claude e o passo a passo para publicar |
 | `previews/` | Imagens da página inteira no computador e no celular |
+| `carrossel/` | As 6 artes do carrossel do Instagram, a legenda (`LEGENDA.md`) e o código das artes |
+| `agenda/culto-impacto-rosa.ics` | Arquivo para salvar o culto na agenda do iPhone e do Outlook |
 
 ## O que a página tem
 
@@ -24,7 +28,9 @@ Av. Alagoas, 1163, Jardim Paulista, Franca-SP, 14401-402.
 - Números e história do Impacto Rosa
 - Galeria em mosaico: as fotos se revelam ao rolar e **abrem ampliadas** ao tocar
 - Wânia Arantes, Visão de Águia e o local (Casa de Oração), com Google Maps e Waze
-- Contato: **WhatsApp 24h (16) 99127-1838**, Instagram e "Como chegar"
+- Seção do culto: pilates com Karen Dantes, culto, comunhão e paleta do dia
+- Botões "Adicionar à agenda" (Google e iPhone/Outlook)
+- Contato: **WhatsApp 24h (16) 99127-1838**, **grupo do WhatsApp**, Instagram e "Como chegar"
 - Botão flutuante do WhatsApp com selo "24h"
 
 ## Como atualizar

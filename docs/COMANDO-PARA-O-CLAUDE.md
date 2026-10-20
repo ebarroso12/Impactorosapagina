@@ -14,24 +14,31 @@ rode `python3 scripts/montar_pagina.py` para gerar o `index.html` final. Nunca e
 `index.html` da raiz à mão.
 
 **DADOS OFICIAIS:**
-- Evento: **Impacto Rosa**, encontro de mulheres da Casa de Oração Franca, com **Wânia Arantes**
-- Próximo encontro: **sábado, 07 de novembro de 2026, às 15h**
-- Contagem regressiva: `data-alvo="2026-11-07T15:00:00-03:00"`; durante o encontro (até `data-fim`)
+- Evento: **Culto do Impacto Rosa**, culto de mulheres da Casa de Oração Franca
+- Idealizadora: **pastora Wânia Arantes** (pastora, mentora e Coach Integral Sistêmica pela Febracis,
+  fundadora da Casa de Oração com o apóstolo Marcos Arantes). Frase do chamado: "Minha música é
+  despertar filhas, formar mulheres inteiras e enviá-las para transformar gerações."
+- Próximo culto: **sábado, 07 de novembro de 2026, às 15h** (fim previsto 18h na agenda). **Entrada gratuita.**
+- Contagem regressiva: `data-alvo="2026-11-07T15:00:00-03:00"`; durante o culto (até `data-fim`)
   mostra "O Impacto Rosa está acontecendo agora!"
-- No encontro de 07/11: **Pilares** (ministração), **confraternização** e **quitutes partilhados**
-  (cada mulher traz um quitute, doce ou salgado, para compartilhar). Seção "No próximo encontro".
+- No culto de 07/11: **pilates com a personal trainer Karen Dantes**, culto com Wânia Arantes e
+  **momento de comunhão** (cada mulher leva um prato, doce ou salgado).
+- Paleta do dia: **camiseta rosa** e **legging preta ou marrom**
 - Local: **Casa de Oração**, Av. Alagoas, 1163, Jardim Paulista, Franca-SP, CEP 14401-402
 - WhatsApp 24h: **+55 16 99127-1838**, link
-  `https://wa.me/5516991271838?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20Impacto%20Rosa.`
-- Instagram da Wânia: `https://www.instagram.com/apwaniaarantes/`
+  `https://wa.me/5516991271838?text=Ol%C3%A1%21%20Quero%20participar%20do%20Culto%20do%20Impacto%20Rosa%20de%2007%2F11.`
+- Grupo do WhatsApp: `https://chat.whatsapp.com/GKTrelO5cqL79CvpSnSm1C?mode=gi_t`
+  (links do grupo NÃO levam a classe `js-whatsapp`, senão o script troca o endereço)
+- Wânia: Instagram `https://www.instagram.com/apwaniaarantes/`, site
+  `https://www.mentorawaniaarantes.com.br/`, YouTube `https://www.youtube.com/@Ap.W%C3%A2niaArantesGerandoProfetas`
 - Casa de Oração: Instagram `https://www.instagram.com/casadeoracao/`, YouTube
   `https://www.youtube.com/@CasadeOracaoTV`, site `https://casadeoracao.com.br/`
 - Cultos da igreja: quartas às 20h, domingos às 10h e às 18h
 
 **PARA TROCAR A DATA DO ENCONTRO**, atualize em todos os lugares de `src/index.html`:
 faixa animada (ticker), selo e data do topo, `data-alvo` e `data-fim` da contagem, bloco final
-"Chegou a sua vez", rodapé, `<title>`, `og:title`, a descrição e o `startDate` dos dados do
-evento (JSON-LD). Gere de novo a imagem `icons/og-image.jpg` com a data nova.
+"Chegou a sua vez", rodapé, `<title>`, `og:title`, a descrição, o `startDate`/`endDate` dos dados do
+evento (JSON-LD), os links do Google Agenda e o arquivo `agenda/culto-impacto-rosa.ics`. Gere de novo a imagem `icons/og-image.jpg` com a data nova.
 
 **REGRAS:**
 - Todos os botões de WhatsApp usam o link acima, com a mensagem preenchida.
@@ -55,3 +62,7 @@ evento (JSON-LD). Gere de novo a imagem `icons/og-image.jpg` com a data nova.
 3. Clique em **Implantar**. Em **Segurança → SSL**, ative o certificado grátis.
 4. Rode `python3 scripts/montar_pagina.py --url https://SEU-DOMINIO/` e salve no GitHub, para a
    prévia do WhatsApp usar o domínio novo.
+
+## Carrossel do Instagram
+As artes ficam em `carrossel/` (PNG 1080×1350) e a legenda em `carrossel/LEGENDA.md`. Para mudar
+um texto, edite `carrossel/carrossel.html` e rode `node scripts/gerar_carrossel.js`.

@@ -46,6 +46,7 @@ def montar(url: str, artefato: bool) -> str:
     html = html.replace('<script src="../assets/js/main.js" defer></script>', f"<script>\n{js}</script>")
     # Ícones da aba e prévia: arquivos na raiz do site.
     html = html.replace('href="../favicon.ico"', 'href="favicon.ico"').replace('href="../icons/', 'href="icons/')
+    html = html.replace('href="../agenda/', 'href="agenda/')
     html = html.replace("SITE_URL", url)
 
     if artefato:
@@ -56,6 +57,8 @@ def montar(url: str, artefato: bool) -> str:
                             r'<link rel="(?:preconnect|stylesheet)"[^>]*>|<style>.*?</style>|'
                             r'<script type="application/ld\+json">.*?</script>', head, re.S)
         manter[0] = "<title>Impacto Rosa</title>"  # nome curto do link
+        # O link do Claude não deixa baixar arquivos: fica só o atalho do Google Agenda.
+        body = re.sub(r'\s*<a class="js-ics"[^>]*>.*?</a>', "", body)
         html = "\n".join(manter) + "\n" + body
 
     assert "../assets" not in html, "sobrou caminho de arquivo sem embutir"
