@@ -10,8 +10,8 @@
   --rose: #ec9db2;        /* rosa principal (texto e destaques) */
   --rose-strong: #d9577f; /* botões */
   --rose-dark: #b03d63;
-  --amber: #f5a524;       /* âmbar: o fogo da chama da Casa de Oração */
-  --flame: #f26b1d;       /* laranja labareda, ponta da chama */
+  --amber: #f5a524;       /* âmbar (laranja labareda): só em textos de destaque */
+  --flame: #f26b1d;       /* ponta da labareda, no degradê dos números da contagem */
   --text: #f7eef1;
   --muted: #c8b1ba;
   --wa: #25d366;
@@ -68,15 +68,15 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
 
 /* Faixa animada */
 .ticker {
-  background: linear-gradient(90deg, var(--flame), var(--amber) 50%, var(--flame));
-  color: var(--bg); overflow: hidden; white-space: nowrap;
+  background: linear-gradient(90deg, var(--rose-dark), var(--rose-strong), var(--rose-dark));
+  color: #fff; overflow: hidden; white-space: nowrap;
   font-size: .7rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
   padding-block: 8px;
 }
 .ticker-track { display: inline-flex; animation: ticker 40s linear infinite; }
 .ticker-track span { padding: 0 1.6rem; }
 .ticker-track span { font-weight: 700; }
-.ticker-track i { font-style: normal; color: var(--rose-dark); }
+.ticker-track i { font-style: normal; color: var(--amber); }
 @keyframes ticker { to { transform: translateX(-50%); } }
 
 /* Navegação */
@@ -110,17 +110,16 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
   position: absolute; inset: 0; z-index: -1;
   background:
     radial-gradient(ellipse at 50% 35%, rgba(217, 87, 127, .22), transparent 60%),
-    radial-gradient(ellipse at 50% 100%, rgba(242, 107, 29, .22), transparent 55%),
     linear-gradient(180deg, rgba(22, 11, 16, .78) 0%, rgba(22, 11, 16, .72) 45%, var(--bg) 100%);
 }
 @keyframes kenburns { from { transform: scale(1.12); } to { transform: scale(1); } }
 .hero-content { max-width: 920px; margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); display: flex; flex-direction: column; align-items: center; gap: 18px; }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; border-radius: 999px;
-  border: 1px solid rgba(245, 165, 36, .5); background: rgba(245, 165, 36, .1); color: var(--amber);
+  border: 1px solid var(--line); background: rgba(42, 22, 32, .7); color: var(--amber);
   font-size: .7rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
 }
-.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 0 rgba(245, 165, 36, .7); animation: pulse 2s infinite; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rose); box-shadow: 0 0 0 0 rgba(245, 165, 36, .7); animation: pulse 2s infinite; }
 @keyframes pulse { 70% { box-shadow: 0 0 0 10px rgba(245, 165, 36, 0); } 100% { box-shadow: 0 0 0 0 rgba(245, 165, 36, 0); } }
 .hero-kicker { font-size: .78rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
 .hero-title {
@@ -135,9 +134,9 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
 .hero-date div { display: flex; flex-direction: column; align-items: center; }
 .hero-date strong { font-family: var(--display); font-size: clamp(2.4rem, 7vw, 3.4rem); line-height: 1; color: var(--rose); font-weight: 700; }
 .hero-date span { font-size: .66rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); }
-.hero-date i { font-style: normal; color: var(--amber); font-size: 1.6rem; }
+.hero-date i { font-style: normal; color: var(--rose); font-size: 1.6rem; }
 .hero-local { display: inline-flex; align-items: center; gap: 8px; font-size: .82rem; color: var(--muted); letter-spacing: .04em; }
-.hero-local svg { color: var(--amber); }
+.hero-local svg { color: var(--rose); }
 
 .countdown { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 8px; }
 .cd-label { font-size: .7rem; font-weight: 600; letter-spacing: .26em; text-transform: uppercase; color: var(--amber); }
@@ -145,15 +144,14 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
 .cd-box {
   display: flex; flex-direction: column; align-items: center; min-width: clamp(64px, 18vw, 92px);
   padding: 12px 6px 10px; border-radius: 14px;
-  background: rgba(42, 22, 32, .78); border: 1px solid rgba(245, 165, 36, .35);
-  box-shadow: inset 0 -12px 24px -16px rgba(242, 107, 29, .55);
+  background: rgba(42, 22, 32, .78); border: 1px solid var(--line);
 }
 .cd-num {
   font-family: var(--display); font-size: clamp(2.2rem, 8vw, 3.2rem); font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums;
   background: linear-gradient(180deg, #ffd27a, var(--amber) 45%, var(--flame)); -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .cd-unit { font-size: .6rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
-.cd-sep { font-family: var(--display); font-size: 2.2rem; color: var(--flame); padding-top: 10px; }
+.cd-sep { font-family: var(--display); font-size: 2.2rem; color: var(--rose); padding-top: 10px; }
 .hero-ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 10px; }
 
 /* Faixa de números */
@@ -179,8 +177,7 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
   background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 32px 26px;
   text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px;
 }
-.pillars svg { width: 40px; height: 40px; color: var(--amber); }
-.pillars li:nth-child(2) svg { color: var(--flame); } /* Adoração: a chama */
+.pillars svg { width: 40px; height: 40px; color: var(--rose); }
 .pillars h3 { font-size: 1.8rem; color: var(--rose); text-transform: uppercase; letter-spacing: .06em; }
 .pillars p { color: var(--muted); font-size: .95rem; }
 
@@ -272,12 +269,11 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
 @media (min-width: 960px) { .local-grid { grid-template-columns: 7fr 5fr; gap: 40px; } }
 .local-card {
   display: grid; gap: 24px; align-items: center; grid-template-columns: 1fr;
-  background: radial-gradient(circle at 15% 30%, rgba(242, 107, 29, .16), transparent 45%), linear-gradient(145deg, #0d0a0b, #1d1209);
-  border: 1px solid rgba(245, 165, 36, .35);
+  background: var(--surface); border: 1px solid var(--line);
   border-radius: 22px; padding: clamp(24px, 4vw, 40px);
 }
 @media (min-width: 640px) { .local-card { grid-template-columns: 180px 1fr; } }
-.local-logo { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; justify-self: center; box-shadow: 0 0 0 2px rgba(245, 165, 36, .35), 0 0 50px rgba(242, 107, 29, .4); }
+.local-logo { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; justify-self: center; }
 .local-card > div { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 .local-card h2 em { color: var(--amber); }
 .local-card address { font-style: normal; font-size: 1.05rem; color: var(--text); }
@@ -291,7 +287,7 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
 .links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .links a { display: inline-flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 600; }
 .links a:hover { color: var(--rose); }
-.links svg { color: var(--amber); }
+.links svg { color: var(--rose); }
 
 /* Chamada final */
 .cta-block {
@@ -321,7 +317,7 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
 .c-ico svg { width: 28px; height: 28px; }
 .c-wa { background: var(--wa); }
 .c-ig { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); }
-.c-pin { background: linear-gradient(135deg, var(--amber), var(--flame)); }
+.c-pin { background: linear-gradient(135deg, var(--rose-strong), var(--rose-dark)); }
 .c-t { font-size: .7rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
 .c-v { font-family: var(--display); font-size: 1.6rem; font-weight: 600; }
 .c-go { font-size: .8rem; font-weight: 700; color: var(--rose); letter-spacing: .06em; }
