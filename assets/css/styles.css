@@ -285,6 +285,12 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
 .quote strong { color: var(--rose); font-weight: 600; font-style: italic; }
 .quote footer { margin-top: 22px; font-size: .74rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--amber); }
 
+.quote-arte figure { margin: 0 auto; max-width: 420px; }
+.quote-arte img { width: 100%; border-radius: 20px; box-shadow: 0 24px 60px rgba(0, 0, 0, .5); }
+
+/* Âncoras do menu: o título não fica escondido atrás do cabeçalho fixo */
+[id] { scroll-margin-top: 84px; }
+
 /* Wânia */
 .wania { padding-block: 96px; }
 .wania-grid { display: grid; gap: 40px; align-items: center; grid-template-columns: 1fr; }

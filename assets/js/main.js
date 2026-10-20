@@ -5,8 +5,8 @@
 (function () {
   'use strict';
 
-  // WhatsApp oficial: +55 16 99127-1838, mensagem "Olá! Quero participar do Culto do Impacto Rosa de 07/11."
-  var WHATSAPP_LINK = 'https://wa.me/5516991271838?text=Ol%C3%A1%21%20Quero%20participar%20do%20Culto%20do%20Impacto%20Rosa%20de%2007%2F11.';
+  // WhatsApp oficial: +55 16 99127-1838, mensagem "Olá! Quero participar da Reunião de Mulheres do Impacto Rosa de 07/11."
+  var WHATSAPP_LINK = 'https://wa.me/5516991271838?text=Ol%C3%A1%21%20Quero%20participar%20da%20Reuni%C3%A3o%20de%20Mulheres%20do%20Impacto%20Rosa%20de%2007%2F11.';
   document.querySelectorAll('.js-whatsapp').forEach(function (el) {
     el.setAttribute('href', WHATSAPP_LINK);
     el.setAttribute('target', '_blank');

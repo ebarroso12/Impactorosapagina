@@ -1,8 +1,8 @@
-# Carrossel · Culto do Impacto Rosa (publicar no sábado, 24/10)
+# Carrossel · Reunião de Mulheres do Impacto Rosa (publicar no sábado, 24/10)
 
 Ordem das artes (1080×1350, formato retrato do Instagram):
 
-1. `01-capa.png`: Culto do Impacto Rosa · Sábado 07/11 · 15h · Entrada gratuita
+1. `01-capa.png`: Reunião de Mulheres · Impacto Rosa · Sábado 07/11 · 15h · Entrada gratuita
 2. `02-wania-arantes.png`: Wânia Arantes, idealizadora, com a frase do chamado
 3. `03-pilates-karen-dantes.png`: Pilates com Karen Dantes, personal trainer
 4. `04-paleta-do-dia.png`: camiseta rosa e legging preta ou marrom
@@ -11,7 +11,7 @@ Ordem das artes (1080×1350, formato retrato do Instagram):
 
 ## Legenda sugerida
 
-Mulheres, o Culto do Impacto Rosa está chegando! 🌸🦅
+Está chegando a Reunião de Mulheres do Impacto Rosa! 🌸🦅
 
 📅 Sábado, 07 de novembro
 ⏰ 15h
@@ -27,4 +27,4 @@ Confirme sua presença pelo WhatsApp (16) 99127-1838 (atendimento 24h) e entre n
 
 Águias não foram feitas para viver presas no chão. Te esperamos! 💗
 
-#ImpactoRosa #CasaDeOracaoFranca #CultoDeMulheres #Franca #WaniaArantes
+#ImpactoRosa #CasaDeOracaoFranca #ReuniaoDeMulheres #Franca #WaniaArantes
