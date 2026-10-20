@@ -57,7 +57,9 @@ evento (JSON-LD), os links do Google Agenda e o arquivo `agenda/reuniao-de-mulhe
 1. Abra https://github.com/ebarroso12/Impactorosapagina/settings/pages
 2. Em **Source**, escolha **Deploy from a branch**.
 3. Em **Branch**, escolha **main** e a pasta **/ (root)**. Clique em **Save**.
-4. Espere 1 a 2 minutos. O site fica em https://ebarroso12.github.io/Impactorosapagina/
+4. Espere 1 a 2 minutos. O site fica em https://impactorosa.mentorawaniaarantes.com.br/
+   (subdomínio: registro CNAME `impactorosa` → `ebarroso12.github.io` no DNS da Hostinger, e o
+   arquivo `CNAME` na raiz do repositório)
 
 ### Hostinger (domínio próprio)
 1. No hPanel, abra o site do domínio e escolha **Implante de GitHub**.

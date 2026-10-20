@@ -20,7 +20,7 @@ import re
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
-URL_PADRAO = "https://ebarroso12.github.io/Impactorosapagina/"
+URL_PADRAO = "https://impactorosa.mentorawaniaarantes.com.br/"
 
 
 def data_uri(caminho: Path, cache: dict) -> str:
