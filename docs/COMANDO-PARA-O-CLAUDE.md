@@ -15,7 +15,7 @@ rode `python3 scripts/montar_pagina.py` para gerar o `index.html` final. Nunca e
 
 **DADOS OFICIAIS:**
 - Evento: **Reunião de Mulheres do Impacto Rosa**, da Casa de Oração Franca (não usar "culto" para o evento)
-- Idealizadora: **pastora Wânia Arantes** (pastora, mentora e Coach Integral Sistêmica pela Febracis,
+- Idealizadora: **pastora Wânia Arantes** (Pastora | Mentora | Escritora;
   fundadora da Casa de Oração com o apóstolo Marcos Arantes). Frase do chamado: "Minha música é
   despertar filhas, formar mulheres inteiras e enviá-las para transformar gerações."
 - Próxima reunião: **sábado, 07 de novembro de 2026, às 15h** (fim previsto 18h na agenda). **Entrada gratuita.**
