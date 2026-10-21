@@ -80,3 +80,12 @@ um texto, edite `carrossel/carrossel.html` e rode `node scripts/gerar_carrossel.
 - Se o envio falhar, o pop-up oferece mandar os dados pelo WhatsApp (16) 99127-1838.
 - No link do Claude (artefato) o navegador bloqueia o envio ao Supabase: lá os cadastros vão pelo
   WhatsApp. No site publicado (GitHub Pages ou Hostinger) eles são salvos no banco.
+
+## Ficha de inscrição completa (`ficha/index.html`)
+- Endereço: https://impactorosa.mentorawaniaarantes.com.br/ficha/ (link no topo da página e na tela "Cadastro feito!").
+- 5 etapas no estilo Jotform: Sobre você · Família e contato · Sua fé · Cuidado e bem-estar (opcional) · Confirmar.
+- Grava na tabela `impacto_rosa_fichas` do projeto Supabase **selaah** (mesma chave pública do pop-up; só insere).
+- Dados de saúde (quadro emocional, medicação, condição física, patologia, sofrimento, situação familiar) são
+  dados sensíveis (LGPD): só são aceitos com a caixa de consentimento específico marcada — o banco recusa se não estiver.
+- Não tem plano B pelo WhatsApp de propósito (dados sigilosos não devem trafegar em conversa).
+- Ver/baixar: Supabase → selaah → Table Editor → `impacto_rosa_fichas` → Export → CSV. Acesso só para a equipe de acolhimento.
