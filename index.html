@@ -521,6 +521,24 @@ a.lead-later { text-align: center; color: var(--rose); }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .tile img { transform: none; filter: none; }
 }
+
+/* Ficha de inscrição: botão e cartão com QR */
+.btn-ficha { border-color: var(--amber); color: #fff; background: rgba(245, 165, 36, .1); }
+.btn-ficha svg { color: var(--amber); }
+.btn-ficha:hover { background: rgba(245, 165, 36, .2); }
+.ficha-card {
+  display: flex; align-items: center; gap: 28px; margin-top: 12px; padding: 24px; width: 100%; max-width: 640px;
+  border: 1px solid var(--line); border-radius: 22px; background: rgba(255, 255, 255, .04); text-align: left;
+}
+.ficha-qr { flex: none; width: 160px; height: auto; padding: 10px; border-radius: 14px; background: #fff; }
+.ficha-info { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.ficha-info h3 { font-size: clamp(1.6rem, 5vw, 2.1rem); }
+.cta-block .ficha-info p:not(.label) { font-size: .95rem; }
+@media (max-width: 560px) {
+  .ficha-card { flex-direction: column; text-align: center; }
+  .ficha-info { align-items: center; }
+  .ficha-info .btn { width: 100%; }
+}
 </style>
   <script type="application/ld+json">
   {
@@ -641,6 +659,9 @@ a.lead-later { text-align: center; color: var(--rose); }
           <a class="btn btn-wa js-whatsapp" href="https://wa.me/5516991271838?text=Ol%C3%A1%21%20Quero%20participar%20da%20Reuni%C3%A3o%20de%20Mulheres%20do%20Impacto%20Rosa%20de%2007%2F11." target="_blank" rel="noopener">
             <svg aria-hidden="true"><use href="#i-wa"></use></svg> Fale com a equipe · 24h
           </a>
+          <a class="btn btn-ficha" href="https://impactorosa.mentorawaniaarantes.com.br/ficha/">
+            <svg aria-hidden="true"><use href="#i-form"></use></svg> Ficha de inscrição
+          </a>
           <a class="btn btn-ghost" href="https://chat.whatsapp.com/GKTrelO5cqL79CvpSnSm1C?mode=gi_t" target="_blank" rel="noopener">
             <svg aria-hidden="true"><use href="#i-group"></use></svg> Entrar no grupo
           </a>
@@ -653,9 +674,6 @@ a.lead-later { text-align: center; color: var(--rose); }
         <button class="lead-open" type="button" data-lead-open>
           <svg aria-hidden="true"><use href="#i-mail"></use></svg> Cadastre-se e receba as novidades do Impacto Rosa
         </button>
-        <a class="lead-open" href="https://impactorosa.mentorawaniaarantes.com.br/ficha/">
-          <svg aria-hidden="true"><use href="#i-heart"></use></svg> Preencha sua ficha de inscrição completa
-        </a>
       </div>
     </section>
 
@@ -911,6 +929,17 @@ a.lead-later { text-align: center; color: var(--rose); }
         <a class="btn btn-ghost" href="https://chat.whatsapp.com/GKTrelO5cqL79CvpSnSm1C?mode=gi_t" target="_blank" rel="noopener">
           <svg aria-hidden="true"><use href="#i-group"></use></svg> Entrar no grupo do Impacto Rosa
         </a>
+        <div class="ficha-card">
+          <img class="ficha-qr" src="data:image/jpeg;base64,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" width="160" height="160" alt="QR code da ficha de inscrição">
+          <div class="ficha-info">
+            <p class="label">Ficha de inscrição</p>
+            <h3>Conte um pouco sobre <em>você</em></h3>
+            <p>Leva uns 3 minutos e ajuda a equipe a te acolher com carinho. Aponte a câmera do celular para o QR code ou toque no botão.</p>
+            <a class="btn btn-ficha" href="https://impactorosa.mentorawaniaarantes.com.br/ficha/">
+              <svg aria-hidden="true"><use href="#i-form"></use></svg> Preencher ficha
+            </a>
+          </div>
+        </div>
         <p class="agenda">
           <svg aria-hidden="true"><use href="#i-cal"></use></svg> Adicionar à agenda:
           <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Reuni%C3%A3o%20de%20Mulheres%20%C2%B7%20Impacto%20Rosa&amp;dates=20261107T150000%2F20261107T180000&amp;ctz=America%2FSao_Paulo&amp;location=Casa%20de%20Ora%C3%A7%C3%A3o%2C%20Av.%20Alagoas%2C%201163%20-%20Jardim%20Paulista%2C%20Franca%20-%20SP%2C%2014401-402&amp;details=Reuni%C3%A3o%20de%20Mulheres%20do%20Impacto%20Rosa%20com%20W%C3%A2nia%20Arantes%20e%20pilates%20com%20Karen%20Dantes.%20Traga%20um%20prato%20para%20o%20momento%20de%20comunh%C3%A3o.%20Legging%20preta%20ou%20marrom%20e%20camiseta%20rosa.%20Entrada%20gratuita." target="_blank" rel="noopener">Google Agenda</a>
@@ -1061,6 +1090,7 @@ a.lead-later { text-align: center; color: var(--rose); }
     <symbol id="i-basket" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18l-1.8 9a2 2 0 0 1-2 1.5H6.8a2 2 0 0 1-2-1.5Z"/><path d="M7.5 10 10 4.5M16.5 10 14 4.5"/><path d="M9 13.5v4M12 13.5v4M15 13.5v4"/></g></symbol>
     <symbol id="i-group" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8.5" r="3.2"/><path d="M3 19.5c.6-3.2 3-5 6-5s5.4 1.8 6 5"/><circle cx="17" cy="9.5" r="2.5"/><path d="M16.5 14.6c2.4.2 4 1.7 4.5 4.4"/></g></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></g></symbol>
+    <symbol id="i-form" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17.5" rx="2.5"/><path d="M9 2.5h6v3H9zM8.5 11h7M8.5 14.5h7M8.5 18h4"/></g></symbol>
     <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></g></symbol>
   </svg>
 
