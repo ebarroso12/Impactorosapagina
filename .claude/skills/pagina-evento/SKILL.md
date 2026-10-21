@@ -18,6 +18,10 @@ estiver fora do padrão) e Python 3 com `pillow numpy potracer "qrcode[pil]" ope
 (e `faster-whisper` + `ffmpeg` para áudios). Conectores opcionais: Supabase (cadastros) e Vercel
 (quando o site principal do domínio roda lá).
 
+Num projeto novo, copie `assets/projeto-base/.claude/` para a raiz do repositório: é a instalação
+automática dessas ferramentas a cada sessão do Claude na nuvem (só instala o que faltar) e ainda
+grava `CHROMIUM_PATH` e `NODE_PATH` para os scripts acharem o navegador e o Playwright.
+
 ## Antes de começar: leia
 
 - `references/licoes-e-preferencias.md` — **obrigatório**. Preferências do usuário e erros que já
