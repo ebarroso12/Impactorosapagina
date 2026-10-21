@@ -254,6 +254,7 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
 .lead-submit, .lead-fallback { width: 100%; margin-top: 8px; }
 .lead-submit[disabled] { opacity: .7; cursor: wait; }
 .lead-later { background: none; border: 0; color: var(--muted); font: inherit; font-size: .85rem; text-decoration: underline; cursor: pointer; padding: 8px; }
+a.lead-later { text-align: center; color: var(--rose); }
 
 /* Pilates com Karen Dantes */
 .pilates {
