@@ -89,3 +89,9 @@ um texto, edite `carrossel/carrossel.html` e rode `node scripts/gerar_carrossel.
   dados sensíveis (LGPD): só são aceitos com a caixa de consentimento específico marcada — o banco recusa se não estiver.
 - Não tem plano B pelo WhatsApp de propósito (dados sigilosos não devem trafegar em conversa).
 - Ver/baixar: Supabase → selaah → Table Editor → `impacto_rosa_fichas` → Export → CSV. Acesso só para a equipe de acolhimento.
+- Botão "Ficha de inscrição" (borda âmbar) no topo e cartão com QR code na chamada final ("Chegou a sua vez").
+
+## QR codes (`carrossel/`)
+`qr-whatsapp.png` (confirmar presença), `qr-grupo.png` (grupo), `qr-ficha.png` (ficha — cópia em
+`assets/img/qr-ficha.png`, usada na página), `qr-site.png` (página) e `qr-codes-todos.png` (os 4 juntos para
+imprimir). Gerar de novo com `python3 .claude/skills/pagina-evento/scripts/qr.py LINK saida.png` (ele confere a leitura).
