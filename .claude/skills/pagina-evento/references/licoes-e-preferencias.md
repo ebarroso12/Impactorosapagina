@@ -54,10 +54,21 @@ Leia antes de mostrar a primeira versão. Cada item veio de uma correção real.
 - QR codes: gere com `scripts/qr.py` (ele relê e confere). Se a mensagem pronta mudar, **gere
   o QR de novo** — o antigo continua com o texto velho.
 
+## Pedidos que voltam sempre
+- "Me mostra os QR codes", "cadê o link", "onde fica a tabela": **mande a imagem/link direto**
+  (SendUserFile com exibição render; link completo da tabela no Supabase), não só o caminho.
+- "Botão" quer dizer botão de verdade (estilo `.btn`), não link sublinhado.
+- Quando o usuário diz "não chegou" algo no banco, primeiro **confira você mesmo** (`select`) e
+  depois oriente onde olhar — quase sempre é a tabela errada ou a tela sem atualizar (F5).
+- "Veja você mesmo": faça a verificação com as ferramentas antes de pedir algo ao usuário.
+
 ## Processo
 - Teste antes de publicar com `scripts/testar_pagina.js` em 320/390/1280 px e olhe os prints.
   Testes de verdade pegaram: overlay bloqueando cliques, variável sobrescrita, imagem esticada,
   "m²" quebrando, ticker com metades diferentes (a faixa animada precisa das duas metades
   idênticas para girar sem emenda).
+- Ao terminar cada mudança: montar → testar → commit → push na branch **e** na `main` (depois de
+  autorizado) → **confirmar no ar** buscando um trecho novo no HTML publicado → republicar o
+  artefato no mesmo link. Só então dizer que está pronto.
 - Se o push for recusado, alguém (o próprio usuário) mexeu no repositório: `git fetch`, veja o
   que é, junte com merge — nunca sobrescreva.

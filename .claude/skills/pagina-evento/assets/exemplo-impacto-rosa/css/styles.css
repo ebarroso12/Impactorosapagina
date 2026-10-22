@@ -254,6 +254,7 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
 .lead-submit, .lead-fallback { width: 100%; margin-top: 8px; }
 .lead-submit[disabled] { opacity: .7; cursor: wait; }
 .lead-later { background: none; border: 0; color: var(--muted); font: inherit; font-size: .85rem; text-decoration: underline; cursor: pointer; padding: 8px; }
+a.lead-later { text-align: center; color: var(--rose); }
 
 /* Pilates com Karen Dantes */
 .pilates {
@@ -490,4 +491,22 @@ svg { width: 1.2em; height: 1.2em; flex: none; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .tile img { transform: none; filter: none; }
+}
+
+/* Ficha de inscrição: botão e cartão com QR */
+.btn-ficha { border-color: var(--amber); color: #fff; background: rgba(245, 165, 36, .1); }
+.btn-ficha svg { color: var(--amber); }
+.btn-ficha:hover { background: rgba(245, 165, 36, .2); }
+.ficha-card {
+  display: flex; align-items: center; gap: 28px; margin-top: 12px; padding: 24px; width: 100%; max-width: 640px;
+  border: 1px solid var(--line); border-radius: 22px; background: rgba(255, 255, 255, .04); text-align: left;
+}
+.ficha-qr { flex: none; width: 160px; height: auto; padding: 10px; border-radius: 14px; background: #fff; }
+.ficha-info { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.ficha-info h3 { font-size: clamp(1.6rem, 5vw, 2.1rem); }
+.cta-block .ficha-info p:not(.label) { font-size: .95rem; }
+@media (max-width: 560px) {
+  .ficha-card { flex-direction: column; text-align: center; }
+  .ficha-info { align-items: center; }
+  .ficha-info .btn { width: 100%; }
 }

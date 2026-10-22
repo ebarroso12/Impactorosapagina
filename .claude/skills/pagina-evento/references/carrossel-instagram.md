@@ -23,6 +23,11 @@ rótulos de QR com `white-space: nowrap`. Confira lendo os QR da arte final com 
 .zip + `LEGENDA.md` (legenda pronta com data, hora, local, entrada, @ do Instagram, paleta, prato,
 WhatsApp, grupo, "link na bio" e hashtags). Não versione o .zip no repositório.
 
+## Folha de QR codes (imprimir / stories)
+Gere cada QR com `scripts/qr.py` (confere a leitura) e junte com
+`python3 scripts/folha_qr.py carrossel/qr-codes-todos.png "NOME · data · hora" "qr-whatsapp.png|Confirmar presença|WhatsApp 24h" "qr-grupo.png|Entrar no grupo|Grupo do WhatsApp" "qr-ficha.png|Ficha de inscrição|Formulário completo" "qr-site.png|Página do evento|endereco.com.br"`
+(ele relê cada QR da folha). Versione os PNG em `carrossel/` para ficarem acessíveis pelo site.
+
 ## Prévia do link (og-image 1200×630) e ícones
 `node scripts/gerar_icones.js --logo … --foto … --rotulo … --titulo … --titulo2 … --data … --selo … --local …`
 Prévia: foto do evento com degradê à esquerda, logo, nome, data e selo. As tags `og:url` e

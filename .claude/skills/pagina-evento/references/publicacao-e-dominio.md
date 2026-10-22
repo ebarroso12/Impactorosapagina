@@ -40,7 +40,12 @@ Hostinger (importação Git) e colar num bloco "HTML personalizado" de construto
   a `main` exige autorização explícita do usuário (pergunte uma vez; depois de autorizado, mantenha
   a `main` igual à branch de trabalho a cada mudança).
 - Confirmar no ar: `curl -s -o /dev/null -w "%{http_code}" https://<dono>.github.io/<repo>/` e
-  procurar no HTML um trecho que só existe na versão nova.
+  procurar no HTML um trecho que só existe na versão nova (some `?v=$RANDOM` ao endereço para
+  fugir do cache). Normalmente entra em 1–2 min.
+- **Pages travado**: caso real, dois pushes seguidos e o site ficou 25 min na versão antiga
+  (arquivos novos davam 404). Resolveu com o **próximo push de verdade** (ex.: atualizar
+  `docs/`), que entrou em 50 s. Não use commit vazio; aproveite para registrar algo útil.
+  A API de builds do Pages não é acessível pelo proxy da sessão.
 
 ## 3. Subdomínio próprio (ex.: evento.dominio.com.br)
 
